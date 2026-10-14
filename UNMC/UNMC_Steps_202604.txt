@@ -1,0 +1,156 @@
+
+----------------------------------------------------------------------------------------------
+1. Received PIN file notification from email
+----------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------
+2. Request PIN file to be copied from SFTP server to DS server
+----------------------------------------------------------------------------------------------
+
+Can you please move the UNMC file from SFTP server into /data/NE_DMA/UPL/lookup directory on Prod DS server.
+
+
+File is copied to :
+/data/NE_DMA/UPL/lookup/UNMC_Phys_Den_cmb_pin_list_Q1_CY2026_nodup.CSV
+
+----------------------------------------------------------------------------------------------
+3. Copy file as per expected naming.
+----------------------------------------------------------------------------------------------
+
+
+Useful Unix Files path:
+/data/NE_DMA/UPL/lookup
+/data/NE_DMA/UPL/out
+/data/NE_DMA/scripts/input_ds_upl_prof_claim.txt
+
+
+
+cd /data/NE_DMA/UPL/lookup/
+
+cp /data/NE_DMA/UPL/lookup/UNMC_Phys_Den_cmb_pin_list_Q1_CY2026_nodup.CSV /data/NE_DMA/UPL/lookup/UNMC_Phys_Den_cmb_pin_list_Q1_CY2026.csv
+chmod 777 /data/NE_DMA/UPL/lookup/UNMC_Phys_Den_cmb_pin_list_Q1_CY2026.csv
+
+[kalkanti@panvlhiaap03 lookup]$ ls -ltr
+total 28
+-rwxrwx---. 1 dsadm    dstage   2592 Feb 23 10:11 UNMC_Phys_Den_cmb_pin_list_Q4_CY2025_nodup.CSV
+drwxrwx---. 2 dsadm    dstage   4096 Feb 25 12:02 Archive
+-rwxrwx---. 1 dsadm    dstage   2592 Feb 25 12:03 UNMC_Phys_Den_cmb_pin_list_Q4_CY2025.csv
+-rwxrwx---. 1 dsadm    dstage   5664 Apr 30 12:45 UNMC_Phys_Den_cmb_pin_list_Q1_CY2026_nodup.CSV
+-rwxrwx---. 1 kalkanti kalkanti 5664 Apr 30 12:57 UNMC_Phys_Den_cmb_pin_list_Q1_CY2026.csv
+
+----------------------------------------------------------------------------------------------
+4. Verify able to read PIN view with DS job view data and no issues with data.
+----------------------------------------------------------------------------------------------
+
+
+File : UNMC_Phys_Den_cmb_pin_list_Q1_CY2026.csv
+
+Folder: NE_DMA_UNMC/PROF
+DS Job : J_07B_DS_PROF_ALL_CLM_FLTR_PROVR_ID
+Quarter: 1
+Year : 2026
+PsetNeDmaParams=UPL
+
+
+
+Nishith,
+
+I did sanity check and the file UNMC_Phys_Den_cmb_pin_list_Q1_CY2026_nodup.CSV is not looking good .
+I see half of the rows have values ,,,,  and for one record the Identifier is split into two rows.
+We will need clean file from State.
+
+
+----------------------------------------------------------------------------------------------
+5. Run the Datastage job
+----------------------------------------------------------------------------------------------
+
+Run J_SEQ_UPL_PROF manually in DS or schedule thru Rundeck.
+Running manually from Datastage pass parameters, for example.
+
+Folder: NE_DMA_UNMC/PROF
+Job : J_SEQ_UPL_PROF
+Parameters:
+PsetNeDmaParams=UPL
+PsetNeDmaConnection=(As pre-defined)
+FILE_DATE=2026-03-01 
+FILE_TYPE=UPL_PROF
+
+
+Job takes around : 6.5 hours
+
+
+----------------------------------------------------------------------------------------------
+6. Check output files created
+----------------------------------------------------------------------------------------------
+
+cd /data/NE_DMA/UPL/out
+	/data/NE_DMA/UPL/out/UPL_ProfHdr_Extract_Q2_2025_FFS.zip
+	/data/NE_DMA/UPL/out/UPL_ProfHdr_Extract_Q2_2025_ENC.zip
+	/data/NE_DMA/UPL/out/UPL_ProfDtl_Extract_Q2_2025_FFS.zip
+	/data/NE_DMA/UPL/out/UPL_ProfDtl_Extract_Q2_2025_ENC.zip
+
+
+----------------------------------------------------------------------------------------------
+7. Validate files and tables
+----------------------------------------------------------------------------------------------
+
+
+select * from IDS_NE.T_UPL_PROF_HDR;
+
+
+select * from IDS_NE.T_UPL_PROF_HDR
+WHERE BILLING_PROV_ID  = 10025606300
+ORDER BY file_date DESC 
+
+
+select count(*) from IDS_NE.T_UPL_PROF_HDR
+where file_date = '2026-01-01'
+UNION
+select count(*) from IDS_NE.T_UPL_PROF_HDR
+where file_date = '2026-02-01'
+UNION
+select count(*) from IDS_NE.T_UPL_PROF_HDR
+where file_date = '2026-03-01';
+
+
+42152
+51324
+43154
+total = 136,630
+
+
+unix:
+cd /data/NE_DMA/UPL/out
+wc -l UPL_ProfHdr_Extract_Q1_2026_ENC.txt
+
+wc -l UPL_ProfHdr_Extract_Q1_2026_ENC.txt
+
+head -2 UPL_ProfHdr_Extract_Q1_2026_ENC.txt
+
+head -2 UPL_ProfHdr_Extract_Q1_2026_ENC.txt
+
+
+----------------------------------------------------------------------------------------------
+8. Ask Admin or Dipak to copy .zip files to State Server.
+----------------------------------------------------------------------------------------------
+
+Request admins to send zipped extract files to state server
+
+/data/NE_DMA/UPL/out/UPL_ProfDtl_Extract_Q1_2026_ENC.zip
+/data/NE_DMA/UPL/out/UPL_ProfDtl_Extract_Q1_2026_FFS.zip
+/data/NE_DMA/UPL/out/UPL_ProfHdr_Extract_Q1_2026_ENC.zip
+/data/NE_DMA/UPL/out/UPL_ProfHdr_Extract_Q1_2026_FFS.zip
+
+
+----------------------------------------------------------------------------------------------
+8. After files are copied to state server email/notify State team.
+----------------------------------------------------------------------------------------------
+
+Reply to same PIN email 
+
+----------------------------------------------------------------------------------------------
+9. Archive existing input and output files
+----------------------------------------------------------------------------------------------
+
+move files to archive as needed
