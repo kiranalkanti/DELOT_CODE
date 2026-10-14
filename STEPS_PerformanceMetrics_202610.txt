@@ -1,0 +1,640 @@
+
+---------------------------------------------------------------------------------------------------------------------------
+														1. Download Files 
+---------------------------------------------------------------------------------------------------------------------------
+
+https://amedeloitte.sharepoint.com/sites/NEDMA970/Shared%20Documents/Forms/AllItems.aspx?csf=1&web=1&e=937iEi&clickparams=eyAiWC1BcHBOYW1lIiA6ICJNaWNyb3NvZnQgT3V0bG9vayIsICJYLUFwcFZlcnNpb24iIDogIjE2LjAuMTk0MjYuMjAyNjAiLCAiT1MiIDogIldpbmRvd3MiIH0%3D&CID=0653f5a1%2Da062%2Db000%2Da7ec%2Dab9b1a33f53f&cidOR=SPO&FolderCTID=0x012000B99A2780769D4F4681B36722E12ECCD9&id=%2Fsites%2FNEDMA970%2FShared%20Documents%2FNE%20DMA%20%2D%20Operations%2FPerformance%20Metrics%20Source%20Files
+
+
+
+Octane_defects_filtered_June_2026.xlsx
+Monthly_Service_Now_Extract_June_2026.csv
+Performance Measures PM Reports_July_2026.xlsx
+CMS Certification Outcome - Case Management Detail June 2026.xlsx
+Performance Measures Report_Results.xlsx
+
+
+------
+Performance_Measures_Report_Results.xlsx  file will be emailed by Saritha
+
+------
+
+Ask Admin to copy Monthly KPI file to PROD Unix: /data/NE_DMA/PERF_METRIC
+MayKPI2026.xlsx -- this file will be available in PROD UNIX "/data/NE_DMA/PERF_METRIC"
+
+
+MayKPI2026.xlsx has issues. Removed AccountCreatedDate column from excel sheet and it worked.
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+														2. Rename Files and some tabs with underscores
+---------------------------------------------------------------------------------------------------------------------------
+
+Rename and copy files to
+C:\Users\kalkanti\OneDrive - Deloitte (O365D)\Documents\20_Support_PROD\Performance Metrics\YYYYMM\INPUT FILES
+
+Octane_defects_selected_filitered_Sep_2026.xlsx   -- 
+SepKPI2026.xlsx -- 
+Monthly_Service_Now_Extract_Sep_2026.csv -- 
+Sep_2026_Performance_Measures_Report_Results.xlsx -- 
+Performance_Measures_PM_Reports_Oct_2026.xlsx -- 
+CMS_Certification_Outcome_Case_Management_Detail_Sep26.xlsx   -- 
+
+
+---------------------------------------------------------------------------------------------------------------------------
+														3. Data Preparation
+---------------------------------------------------------------------------------------------------------------------------
+
+Follow steps in the document
+
+NE_DMA_Performance_Metrics_Data_Prep
+
+C:\Users\kalkanti\OneDrive - Deloitte (O365D)\Documents\20_Support_PROD\Performance Metrics
+
+
+
+
+-----
+
+Operations_Meeting_Tracker
+Change_Requests
+Status_Report_Metrics
+Task_Slipping_Report
+
+-----
+Claim lines Summary  Report
+Enrollment Detail Report
+
+----
+
+contact_type
+Rename opened_by to caller_id
+
+
+YYYY-MM-DD HH:MM:SS
+
+opened_at
+resolved_at
+closed_at
+reopened_time
+u_date_time_1
+u_date_time_2
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+														3a. Upload files to PROD
+---------------------------------------------------------------------------------------------------------------------------
+
+1. Move existing files from  /data/NE_DMA/PERF_METRIC/input to  /data/NE_DMA/PERF_METRIC/input/Archive
+
+
+2. Upload six files for the last month to /data/NE_DMA/PERF_METRIC/input
+
+
+[kalkanti@panvlhiaap03 input]$ pwd
+
+[kalkanti@panvlhiaap03 ~]$ cd /data/NE_DMA/PERF_METRIC/input
+[kalkanti@panvlhiaap03 input]$ ls -ltr
+
+
+-rw-r--r--. 1 kalkanti kalkanti 34346 Oct  8 10:34 CMS_Certification_Outcome_Case_Management_Detail_Sep26.xlsx
+-rw-r--r--. 1 kalkanti kalkanti 22291 Oct  8 10:38 Octane_defects_selected_filitered_Sep_2026.xlsx
+-rw-r--r--. 1 kalkanti kalkanti   932 Oct  8 10:43 Monthly_Service_Now_Extract_Sep_2026.csv
+-rw-r--r--. 1 kalkanti kalkanti 19053 Oct  8 10:44 SepKPI2026.xlsx
+-rw-r--r--. 1 kalkanti kalkanti 33589 Oct  8 10:59 Performance_Measures_PM_Reports_Oct_2026.xlsx
+drwxrwxr-x. 3 dsadm    dstage   16384 Oct  8 11:00 Archive
+-rw-r--r--. 1 kalkanti kalkanti 21563 Oct 13 17:56 Sep_2026_Performance_Measures_Report_Results.xlsx
+
+
+
+
+
+chmod 775 CMS_Certification*
+chmod 775 Octane_defects*
+chmod 775 Performance_Measures_PM_*
+chmod 775 *KPI*
+chmod 775 *Performance_Measures_Report_Results*
+chmod 775 *Monthly_Service_Now_Extract*
+
+
+touch -c *
+
+
+---------------------------------------------------------------------------------------------------------------------------
+												3b. Data Validation
+---------------------------------------------------------------------------------------------------------------------------
+
+------- Before Counts -------
+
+
+SELECT 'T_AM_PM',count(*) FROM IDS_NE.T_AM_PM WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_OPS_MTNG_TRACKER',count(*) FROM IDS_NE.T_OPS_MTNG_TRACKER WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_ALM_PM',count(*) FROM IDS_NE.T_ALM_PM WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_KPI_USER_MGR',count(*) FROM IDS_NE.T_KPI_USER_MGR WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_INVESTIGTN_ACTIVITY_METRIC',count(*) FROM IDS_NE.T_INVESTIGTN_ACTIVITY_METRIC WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_PERF_TRKR_SUMMARY',count(*) FROM IDS_NE.T_PERF_TRKR_SUMMARY WHERE PERF_MONTH='2026-09-01'
+UNION
+SELECT 'T_STATUS_RPT_METRICS',count(*) FROM IDS_NE.T_STATUS_RPT_METRICS WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_REPORT_RUNTIME_METRIC',count(*) FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE trunc(FILE_DATE) ='2026-10-01'
+UNION
+SELECT 'T_REPORT_ALM',count(*) FROM IDS_NE.T_REPORT_ALM WHERE FILE_DATE='2026-10-01'
+UNION
+SELECT 'T_REPORT_RUNTIME_METRIC',count(*) FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE FILE_DATE='2026-10-01';
+
+
+
+T_REPORT_ALM                	0
+T_OPS_MTNG_TRACKER          	0
+T_STATUS_RPT_METRICS        	0
+T_REPORT_RUNTIME_METRIC     	0
+T_AM_PM                     	0
+T_KPI_USER_MGR              	0
+T_PERF_TRKR_SUMMARY         	0
+T_ALM_PM                    	0
+T_INVESTIGTN_ACTIVITY_METRIC	0
+
+---------------------------------------------------------------------------------------------------------------------------
+														4. Run Jobs below
+---------------------------------------------------------------------------------------------------------------------------
+
+
+SEQ_PERF_TRKR_RUN_ALL
+
+FILE_DATE_CURR=2026-10-01
+FILE_DATE_PREV=2026-09-01
+Src_Path=/data/NE_DMA/PERF_METRIC/input
+
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://panvlhiacp01.nehealthinteractive.com:10000/default
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+FileName_CMSCertOutcome=CMS_Certification_Outcome_Case_Management_Detail_Sep26.xlsx
+FileName_OctaneDefects=Octane_defects_selected_filitered_Sep_2026.xlsx
+FileName_PerfMeasuresPM=Performance_Measures_PM_Reports_Oct_2026.xlsx
+FileName_ServiceNowMonthly=Monthly_Service_Now_Extract_Sep_2026.csv
+FileName_KPI=SepKPI2026.xlsx
+FileName_PerfMeasuresReportResults=Sep_2026_Performance_Measures_Report_Results.xlsx
+
+
+
+
+-----------------------------------------
+J_KPI_INVESTIGTN_ACTIVITY
+load into T_INVESTIGTN_ACTIVITY_METRIC table
+-----------------------------------------
+
+Current job parameters:
+Src_Path=/data/NE_DMA/PERF_METRIC/input
+Src_File_Name=CMS_Certification_Outcome_Case_Management_Detail_Jun26.xlsx
+FILE_DATE=2026-09-01
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+
+-----------------------------------------
+J_KPI_USERS_LIST_V2 
+loads into IDS_NE.T_KPI_USER_MGR
+-----------------------------------------
+
+AprKPI2026.xlsx has issues. Removed AccountCreatedDate column from excel sheet and it worked.
+Use Job : CopyOfJ_KPI_USERS_LIST_V2
+
+Current job parameters:
+Src_Path=/data/NE_DMA/PERF_METRIC/input
+Src_File_Name=JuneKPI2026.xlsx
+FILE_DATE=2026-09-01
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+
+
+-----------------------------------------
+J_PM_ALM
+load into IDS_NE.T_ALM_PM
+-----------------------------------------
+
+Current job parameters:
+Src_Path=/data/NE_DMA/PERF_METRIC/input
+Src_File_Name=Octane_defects_selected_filitered_Jun_2026.xlsx
+FILE_DATE=2026-09-01
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+
+-----------------------------------------
+J_OPS_MTNG_TRACKER
+loads into IDS_NE.T_OPS_MTNG_TRACKER
+-----------------------------------------
+
+Current job parameters:
+Src_Path=/data/NE_DMA/PERF_METRIC/input
+Src_File_Name=Performance_Measures_PM_Reports_Jul_2026.xlsx
+FILE_DATE=2026-09-01
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+
+
+-----------------------------------------
+J_SERVICENOW_EXTRACT
+loads into IDS_NE.T_AM_PM
+-----------------------------------------
+Current job parameters:
+Src_File_Name=Monthly_Service_Now_Extract_Jun_2026.csv
+FILE_DATE=2026-09-01
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+
+-----------------------------------------
+J_REPORT_METRICS   -- keep it to current month beginning
+loads into IDS_NE.T_REPORT_ALM
+-----------------------------------------
+Current job parameters:
+Src_Path=/data/NE_DMA/PERF_METRIC/input
+Src_File_Name=Performance_Measures_Report_Results.xlsx
+FILE_DATE=2026-10-01
+PsetNeDmaConnection=DB2Connection
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+
+
+-----------------------------------------
+J_STATUS_RPT_METRIC
+loads into IDS_NE.T_STATUS_RPT_METRICS
+-----------------------------------------
+Current job parameters:
+Src_Path=/data/NE_DMA/PERF_METRIC/input
+Src_File_Name=Performance_Measures_PM_Reports_Jul_2026.xlsx
+FILE_DATE=2026-09-01
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+
+-----------------------------------------
+J_REPORT_RUNTIME_METRIC  - no parameter change
+loads into  IDS_NE.T_REPORT_RUNTIME_METRIC
+from IDS_NE.T_REPORT_ALM
+-----------------------------------------
+This Parallel job
+
+Current job parameters:
+FILE_TYPE=FFSCLM
+FL_YR=2019
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+$APT_DEFAULT_TRANSPORT_BLOCK_SIZE=531072
+
+
+
+-----------------------------------------
+J_SEQ_PERF_TRKR_SUMMARY
+loads into IDS_NE.T_PERF_TRKR_SUMMARY
+from IDS_NE.T_REF_AMPM
+Dataset:
+
+-----------------------------------------
+
+Current job parameters:
+FILE_DATE=2026-09-01
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+
+
+---------------------------------------------------------------------------------------------------------------------------
+												5. Data Validation
+---------------------------------------------------------------------------------------------------------------------------
+
+
+------- Before Counts -------
+
+SELECT 'T_AM_PM',count(*) FROM IDS_NE.T_AM_PM WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_OPS_MTNG_TRACKER',count(*) FROM IDS_NE.T_OPS_MTNG_TRACKER WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_ALM_PM',count(*) FROM IDS_NE.T_ALM_PM WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_KPI_USER_MGR',count(*) FROM IDS_NE.T_KPI_USER_MGR WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_INVESTIGTN_ACTIVITY_METRIC',count(*) FROM IDS_NE.T_INVESTIGTN_ACTIVITY_METRIC WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_PERF_TRKR_SUMMARY',count(*) FROM IDS_NE.T_PERF_TRKR_SUMMARY WHERE PERF_MONTH='2026-09-01'
+UNION
+SELECT 'T_STATUS_RPT_METRICS',count(*) FROM IDS_NE.T_STATUS_RPT_METRICS WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_REPORT_RUNTIME_METRIC',count(*) FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE trunc(FILE_DATE) ='2026-10-01'
+UNION
+SELECT 'T_REPORT_ALM',count(*) FROM IDS_NE.T_REPORT_ALM WHERE FILE_DATE='2026-10-01'
+UNION
+SELECT 'T_REPORT_RUNTIME_METRIC',count(*) FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE FILE_DATE='2026-10-01';
+
+
+
+
+
+
+
+
+
+------- After Counts -------
+
+
+SELECT 'T_AM_PM',count(*) FROM IDS_NE.T_AM_PM WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_OPS_MTNG_TRACKER',count(*) FROM IDS_NE.T_OPS_MTNG_TRACKER WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_ALM_PM',count(*) FROM IDS_NE.T_ALM_PM WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_KPI_USER_MGR',count(*) FROM IDS_NE.T_KPI_USER_MGR WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_INVESTIGTN_ACTIVITY_METRIC',count(*) FROM IDS_NE.T_INVESTIGTN_ACTIVITY_METRIC WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_PERF_TRKR_SUMMARY',count(*) FROM IDS_NE.T_PERF_TRKR_SUMMARY WHERE PERF_MONTH='2026-09-01'
+UNION
+SELECT 'T_STATUS_RPT_METRICS',count(*) FROM IDS_NE.T_STATUS_RPT_METRICS WHERE FILE_DATE='2026-09-01'
+UNION
+SELECT 'T_REPORT_RUNTIME_METRIC',count(*) FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE trunc(FILE_DATE) ='2026-10-01'
+UNION
+SELECT 'T_REPORT_ALM',count(*) FROM IDS_NE.T_REPORT_ALM WHERE FILE_DATE='2026-10-01'
+UNION
+SELECT 'T_REPORT_RUNTIME_METRIC',count(*) FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE FILE_DATE='2026-10-01';
+
+
+
+T_OPS_MTNG_TRACKER          	0
+T_REPORT_ALM                	27
+T_AM_PM                     	2
+T_INVESTIGTN_ACTIVITY_METRIC	390
+T_REPORT_RUNTIME_METRIC     	27
+T_STATUS_RPT_METRICS        	6
+T_KPI_USER_MGR              	95
+T_PERF_TRKR_SUMMARY         	65
+T_ALM_PM                    	0
+
+
+--------------------not needed below when taken counts above  --------------------
+
+
+SELECT * FROM IDS_NE.T_AM_PM WHERE FILE_DATE='2026-09-01'; --6 ROWS
+SELECT * FROM IDS_NE.T_OPS_MTNG_TRACKER WHERE FILE_DATE='2026-09-01'; -- 0 ROWS 
+SELECT * FROM IDS_NE.T_ALM_PM WHERE FILE_DATE='2026-09-01'; -- 0 ROWS
+SELECT * FROM IDS_NE.T_KPI_USER_MGR WHERE FILE_DATE='2026-09-01'; --95 ROWS
+SELECT * FROM IDS_NE.T_INVESTIGTN_ACTIVITY_METRIC WHERE FILE_DATE='2026-09-01'; --367 ROWS
+SELECT * FROM IDS_NE.T_PERF_TRKR_SUMMARY WHERE PERF_MONTH='2026-09-01'; -- 67 ROWS
+SELECT * FROM IDS_NE.T_STATUS_RPT_METRICS WHERE FILE_DATE='2026-09-01'; --95 ROWS
+SELECT * FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE trunc(FILE_DATE) ='2026-10-01'; --
+
+SELECT * FROM IDS_NE.T_REPORT_ALM WHERE FILE_DATE='2026-10-01'; -- 22 ROWS
+SELECT * FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE FILE_DATE='2026-10-01';  -- 22 ROWS
+SELECT * FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE FILE_DATE='2026-10-01' AND REPORT_NAME IS NULL ;
+
+
+
+
+--------------------
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+													6. Update Data in PROD
+---------------------------------------------------------------------------------------------------------------------------
+
+Claim lines Summary  Report
+Enrollment Detail Report
+
+
+-------------- check before update  --------------
+
+
+SELECT REPORT_ROW_COUNT FROM IDS_NE.T_REPORT_ALM
+WHERE FILE_DATE='2026-10-01' AND REPORT_NAME = 'Claim lines Summary  Report';
+3.24795594E8
+
+SELECT REPORT_ROW_COUNT FROM IDS_NE.T_REPORT_ALM
+WHERE FILE_DATE='2026-10-01' AND REPORT_NAME = 'Enrollment Detail Report';
+5.0332385E7
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE FILE_DATE='2026-10-01' AND REPORT_NAME IS NULL 
+
+
+SELECT * FROM IDS_NE.T_REPORT_RUNTIME_METRIC
+WHERE FILE_DATE='2026-10-01' AND REPORT_NAME IS NULL 
+
+--------------
+
+SELECT REPORT_NAME, REPORT_ROW_COUNT FROM IDS_NE.T_REPORT_ALM 
+where FILE_DATE = '2026-10-01'
+and REPORT_NAME = 'HIACMS001 National Health Expenditure Account (NHEA) Report'
+union
+SELECT  REPORT_NAME, REPORT_ROW_COUNT FROM IDS_NE.T_REPORT_ALM 
+where FILE_DATE = '2026-10-01'
+and REPORT_NAME = 'CMS 416';
+
+
+---------------------------- UPDATES /DELETES  ----------------------------
+Send email to DBA Rakesh to run the queries in DB2 PROD:
+or
+
+--------
+Use J_1time_upd_PerfMet job to update the statement, compile and run the job. 
+Run the job two times for two statements.
+
+324,795,594
+50,332,385
+
+324795594
+50332385
+
+
+UPDATE IDS_NE.T_REPORT_ALM SET REPORT_ROW_COUNT= '324795594' WHERE FILE_DATE='2026-10-01' AND REPORT_NAME = 'Claim lines Summary  Report';
+
+UPDATE IDS_NE.T_REPORT_ALM SET REPORT_ROW_COUNT= '50332385' WHERE FILE_DATE='2026-10-01' AND REPORT_NAME = 'Enrollment Detail Report';
+
+--------
+
+Use job J_1time_del_PerfMet to run deletes below:
+Run the job two times for two statements:
+
+DELETE FROM IDS_NE.T_REPORT_ALM WHERE FILE_DATE='2026-10-01' AND REPORT_NAME IS NULL ;
+
+DELETE FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE FILE_DATE='2026-10-01' AND REPORT_NAME IS NULL ;
+
+
+
+--------------
+As needed below:
+Also Verify S_REPORT_ROW_COUNT field in IDS_NE.T_METRIC_QUERY_RETURN_TIME is N/A where count is not available.
+
+UPDATE IDS_NE.T_REPORT_ALM
+SET REPORT_ROW_COUNT = 'N/A'
+where FILE_DATE = '2026-09-01'
+and REPORT_NAME = 'HIACMS001 National Health Expenditure Account (NHEA) Report';
+
+
+UPDATE IDS_NE.T_REPORT_ALM
+SET REPORT_ROW_COUNT = 'N/A'
+where FILE_DATE = '2026-09-01'
+and REPORT_NAME = 'CMS 416';
+
+
+---------------------------------------------------------------------------------------------------------------------------
+												7. Data Validation After Udpate
+---------------------------------------------------------------------------------------------------------------------------
+
+SELECT REPORT_ROW_COUNT FROM IDS_NE.T_REPORT_ALM
+WHERE FILE_DATE='2026-10-01' AND REPORT_NAME = 'Claim lines Summary  Report';
+
+
+SELECT REPORT_ROW_COUNT FROM IDS_NE.T_REPORT_ALM
+WHERE FILE_DATE='2026-10-01' AND REPORT_NAME = 'Enrollment Detail Report';
+
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE FILE_DATE='2026-10-01' AND REPORT_NAME IS NULL 
+0 ROWS 
+
+
+SELECT * FROM IDS_NE.T_REPORT_RUNTIME_METRIC 
+WHERE FILE_DATE='2026-10-01' AND REPORT_NAME IS NULL ;
+
+
+------------- Check if any NOT MET rows exist -----------
+
+SELECT * FROM IDS_NE.T_REPORT_RUNTIME_METRIC WHERE FILE_DATE='2026-10-01';  -- 22 ROWS
+
+
+---------------------------------------------------------------------------------------------------------------------------
+												8. Send email to team that Perf Report data is available
+---------------------------------------------------------------------------------------------------------------------------
+
+Indu, Nishish, Sudesh, Saritha, Catharine, Deidre.
+
