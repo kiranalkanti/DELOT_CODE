@@ -1,0 +1,103 @@
+------------------------------------------------------------------------------
+				Nebraska 		
+------------------------------------------------------------------------------
+
+kalkanti
+Hare$14Krishna
+Me21eSHc7F3b8!
+
+
+8A67pkJEZ0E8dOM!
+
+(Unix: Non-PROD ):
+kalkanti@healthinteractive.com
+sudo -u spark bash -i
+sudo -u spark bash -I
+cd /home/spark/scripts
+cd /home/spark/ProcessScripts
+hdfs dfs -ls -t -r /ne-dma/
+
+
+NON PROD VPN: Forticlient
+https://websso-nonprod.healthinteractive.com/adfs/portal/updatepassword
+kalkanti@healthinteractive.com
+kalkanti
+8A67pkJEZ0E8dOM!
+aBLe8JgRK92p0N9!
+
+
+PROD VPN:
+https://ne.healthinteractive.com/adfs/portal/updatePassword
+kalkanti@nehealthinteractive.com
+kalkanti
+Hare$12Krishna
+Hare$10Krishna
+
+
+GIT:
+https://meshiagit.healthinteractive.com/users/sign_in
+https://meshiagit.healthinteractive.com
+kalkanti@deloitte.com
+Hare$12Krishna
+Hare$09Krishna
+
+------------------------------------------------------------------------------
+				Nebraska 		
+------------------------------------------------------------------------------
+kiran.alkanti@nebraska.gov
+Hare$1980Krishna
+18u%E_0CE0)YZTbg
+
+Email:
+https://teams.public.onecdn.static.microsoft/evergreen-assets/safelinks/2/atp-safelinks.html
+
+Trainings Workday:
+https://identity.wd108.myworkday.com/wday/authgwy/son/upc/login
+
+
+------------------------------------------------------------------------------
+				Deloitte 		
+------------------------------------------------------------------------------
+
+kalkanti
+kalkanti@deloitte.com
+Hare$14Krishna
+Hare$12Krishna
+Hare$10Krishna
+
+
+Change Pass : 
+Control + alt + deloitte
+it will ask MFA and portal will open to change password.
+------------------------------------------------------------------------------
+
+oneremotednet.deloitte.com
+
+
+------------------------------------------------------------------------------------
+                 GIT Process
+------------------------------------------------------------------------------------
+
+cd C:\GitRepo\Datastage\datastage
+git config --list
+git status
+git pull
+git status
+add/remove code changes
+git status
+git add --all
+git status
+git commit -m "Update sit_input.txt"
+git commit -m "Update uat_input.txt"
+git commit -m "Update pilot_input.txt"
+git commit -m "Update prod_input.txt"
+git status
+git push
+
+
+git commit -m "Update sit_uat_input.txt"
+
+------------------------------------------------------------------------------------
+
+
+
