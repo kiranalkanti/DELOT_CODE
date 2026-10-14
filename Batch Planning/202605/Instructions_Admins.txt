@@ -1,0 +1,47 @@
+
+
+Dipak,
+
+1. Please make sure Monthly Run Deck jobs are pointing to Cloudera.
+
+2. Cancel regular weekly sunday master schedule on 5/31(Sunday).
+
+3. PROD_Datastage Monthly_UPIC is scheduled to run on 5/31(Sunday) at 10AM.
+   Please schedule Weekly_Sunday_Master to run after Monthly_UPIC on 5/31(Sunday) around 3:00PM.
+
+3. 
+
+
+
+----------------------------------------------------------------------------------------
+
+Max/Saurabh,
+
+
+The DB Sync Activity dates are falling on 6/3(Wed),6/8(Mon) and 6/15(Mon). Can you please plan accordingly.
+
+
+
+
+
+----------------------------------------------------------------------------------------
+
+
+prov_mem_nfo_tpl_pa_Retro            -> Files: 5/24(Sun 11AM)           -> Job 5/26 (Tue 06:00AM)
+FFS Claim 							 -> Files: 5/26(Tue) 				-> Job 5/27( Wed 06:00AM)
+SOC(Share of Cost),TPL,FFSD Claim    -> Files: 5/26(Tues 11PM) 			-> Job 5/27( Wed 12:00PM)
+
+UPIC                                 -> 								-> Job 5/31 (Sun 10:00AM)
+Weekly_Sunday_Master                 ->                                 -> Job 5/31 (Sun 12:30PM)
+
+Monthly Encounter                    ->                                 -> Job 6/01 (Mon 12:00PM)
+Monthly Prov-Own                     -> Files: 6/01(Mon 5PM)            -> Job 6/01 (Mon 06:30PM)
+
+DB Sync                              ->                                 -> 6/03(Wed 6:00PM)
+FAPA                                 ->                                 -> 6/07(Sun 9:30PM)
+DB Sync                              ->                                 -> 6/08(Mon 6:00PM)
+OPTUMAS                              ->                                 -> 6/11(Thu 8:00AM)
+DB Sync                              ->                                 -> 6/15(Mon 6:00PM)
+
+
+
