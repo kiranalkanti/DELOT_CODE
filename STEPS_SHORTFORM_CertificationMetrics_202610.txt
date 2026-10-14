@@ -1,0 +1,404 @@
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			0. AS NEEDED ONLY Run two Jobs below on first of every month with FILE_DATE = end of last month
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------
+S_CERT_METRICS_RPT_837
+---------------------------------------
+Current job parameters:
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+FILE_DATE=2026-08-31
+
+
+---------------------------------------
+S_CERT_METRICS_RPT_NCPDP
+---------------------------------------
+
+Current job parameters:
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+FILE_DATE=2026-08-31
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			1a.  Run two Jobs below on first of every month with FILE_DATE = end of last month
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
+If percentage doesn't match run these two jobs for FILE_DATE=2026-08-31( end of last month)
+
+
+FILE_DATE=2026-08-31
+J_CERT_METRICS_RPT_MCE_03_PERCENT_OF_ENCS_ACCEPTED
+J_CERT_METRICS_RPT_MCE_06_LOAD_ACCEPTED_TO_T_MCE_MTD_DATA
+
+
+If the MTD report and Base tables match, then run summary job
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			2. Validate T_REPORT_RUNTIME_METRIC for couple of report and run Update if needed 
+---------------------------------------------------------------------------------------------------------------------------
+select REPORT_NAME , count(*)
+FROM IDS_NE.T_REPORT_RUNTIME_METRIC
+group by REPORT_NAME
+order by REPORT_NAME
+
+There should be no duplicate report names with different names :
+HIAPRV008 Provider Participation Analysis Report
+Claim lines Summary Report
+
+If dupes found update names:
+
+UPDATE IDS_NE.T_REPORT_RUNTIME_METRIC
+SET REPORT_NAME = 'HIAEAE105 Member Enrollment by Benefit Program Report'
+WHERE REPORT_NAME = 'HIAEAE105 Member Enrollment by Benefit ProgrPM Report';
+
+UPDATE IDS_NE.T_REPORT_RUNTIME_METRIC
+SET REPORT_NAME = 'Claim lines Summary Report'
+WHERE REPORT_NAME = 'Claim lines Summary  Report'
+
+Claim lines Summary Report
+HIAEAE105 Member Enrollment by Benefit Program Report
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			3. Pre Data Validation - IDS_NE.T_REPORT_ALM
+---------------------------------------------------------------------------------------------------------------------------
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE file_date = '2026-09-01';           --- we should see data 
+
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE file_date = '2026-08-01';            --- we should not see data 
+
+
+SELECT file_date, COUNT(*) FROM IDS_NE.T_REPORT_ALM
+GROUP BY file_date
+ORDER BY file_date DESC;
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			4. Email DBA Rakesh to Udpate Data in PROD01 or update statement in job  J_1time_upd_CertMet and run 
+---------------------------------------------------------------------------------------------------------------------------
+
+UPDATE IDS_NE.T_REPORT_ALM SET FILE_DATE = '2026-08-01' WHERE FILE_DATE = '2026-09-01';
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			5. Post Update Data Validation - IDS_NE.T_REPORT_ALM
+---------------------------------------------------------------------------------------------------------------------------
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE file_date = '2026-09-01';           --- we should NOT see data 
+
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE file_date = '2026-08-01';            --- we should see data 
+
+
+SELECT file_date, COUNT(*) FROM IDS_NE.T_REPORT_ALM
+GROUP BY file_date
+ORDER BY file_date DESC;
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			6.  RERUN THESE TWO JOBS ALWAYS
+   			      ReRun jobs as needed for 837 percentage errors
+---------------------------------------------------------------------------------------------------------------------------
+
+If percentage doesn't match run these two jobs for FILE_DATE=2026-08-31 ( end of last month)
+
+J_CERT_METRICS_RPT_MCE_03_PERCENT_OF_ENCS_ACCEPTED
+J_CERT_METRICS_RPT_MCE_06_LOAD_ACCEPTED_TO_T_MCE_MTD_DATA
+
+
+If the MTD report and Base tables match, then run summary job
+
+
+---------------------------------------------------------------------------------------------------------------------------
+		7a. BEFORE Data Validate
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
+SELECT * FROM IDS_NE.T_MTD_DATA
+WHERE PROCESSING_DATE  = '2026-08-31'
+ORDER BY PLAN_ID,REPORT_TYPE;
+
+
+SELECT * FROM IDS_NE.T_MCE_MTD_DATA
+WHERE PROCESSING_DATE  = '2026-08-31'
+AND TYPE = 'CLEAN'
+ORDER BY PLAN_ID,TYPE;
+
+SELECT * FROM IDS_NE.T_NCPDP_MTD_DATA
+WHERE PROCESSING_DATE  = '2026-08-31'
+AND TYPE = 'CLEAN'
+ORDER BY PLAN_ID,TYPE;
+
+
+
+
+select 'T_METRIC_AVLBLTY_OF_FED_REPORTS' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_AVLBLTY_OF_FED_REPORTS WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_CASE_MGMT' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_CASE_MGMT WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_CONSUMER_DATA' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_CONSUMER_DATA WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_DATA_PROPOGATION' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_DATA_PROPOGATION WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_INC_DATA_POOL' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_INC_DATA_POOL WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_INVESTIGATION_ACTIVITY' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_INVESTIGATION_ACTIVITY WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_MTD_ACCEPTED_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_MTD_CLEAN_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_NCPDP_ACCEPTED_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_NCPDP_CLEAN_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_PI_REPORT' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_PI_REPORT WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_QUERY_RETURN_TIME' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_QUERY_RETURN_TIME WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_SYSTEM_AVAILABILITY' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_SYSTEM_AVAILABILITY WHERE FILE_DATE = '2026-08-31';
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			7. Run Summary Sequence.  
+			   One Job Seq below with FILE_DATE = end of last month. This has to be run before 10-12th of each month
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------
+S_CERT_METRICS_RPT_SUMMARY_TABLES_QUARTERLY
+---------------------------------------
+
+Current job parameters:
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+FILE_DATE=2026-08-31
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			8. Validate Data loaded
+---------------------------------------------------------------------------------------------------------------------------
+
+
+After job tables loaded:
+
+select * from IDS_NE.T_METRIC_AVLBLTY_OF_FED_REPORTS WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_CASE_MGMT WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_CONSUMER_DATA WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_DATA_PROPOGATION WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_INC_DATA_POOL WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_INVESTIGATION_ACTIVITY WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_PI_REPORT WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_QUERY_RETURN_TIME WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_SYSTEM_AVAILABILITY WHERE FILE_DATE = '2026-08-31';
+
+counts:
+
+select 'T_METRIC_AVLBLTY_OF_FED_REPORTS' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_AVLBLTY_OF_FED_REPORTS WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_CASE_MGMT' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_CASE_MGMT WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_CONSUMER_DATA' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_CONSUMER_DATA WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_DATA_PROPOGATION' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_DATA_PROPOGATION WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_INC_DATA_POOL' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_INC_DATA_POOL WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_INVESTIGATION_ACTIVITY' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_INVESTIGATION_ACTIVITY WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_MTD_ACCEPTED_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_MTD_CLEAN_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_NCPDP_ACCEPTED_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_NCPDP_CLEAN_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_PI_REPORT' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_PI_REPORT WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_QUERY_RETURN_TIME' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_QUERY_RETURN_TIME WHERE FILE_DATE = '2026-08-31'
+UNION
+select 'T_METRIC_SYSTEM_AVAILABILITY' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_SYSTEM_AVAILABILITY WHERE FILE_DATE = '2026-08-31';
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+				9. DATA VALIDATION Validation of the Table and Report
+				This should be the last step if no issues.
+---------------------------------------------------------------------------------------------------------------------------
+
+Run the queries below and compare the Data in Tables with Specific Reports.
+Compare Report name and metrics with data in the table for each report.
+
+
+If processing month is Jan(01) then filter should be MONTH_1_4_7_10
+If processing month is Feb(02) then filter should be MONTH_2_5_8_11
+If processing month is Mar(03) then filter should be MONTH_3_6_9_12
+
+
+
+SELECT * FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11 <> 0;
+
+SELECT * FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11 <> 0;
+
+SELECT * FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11 <> 0;
+
+SELECT * FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11 <> 0;
+
+
+
+
+Verify MTD Reports information
+Check Total Number of Encounters
+Percentage of Encounters Accepted
+Percentage Clean Encounters W/ No Errors
+
+
+
+ENCOUNTER SQLS:
+-----------------
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR  FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER 
+WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7100 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7100;
+
+
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR  FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER 
+WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7300 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7300;
+
+
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR  FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER 
+WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7600 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7600;
+
+
+
+
+NCPDP SQLS:
+------------------
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7100 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31'AND MONTH_2_5_8_11<>0 AND SORT=7100 ;
+
+
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7300 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31'AND MONTH_2_5_8_11<>0 AND SORT=7300 ;
+
+
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31' AND MONTH_2_5_8_11<>0 AND SORT=7600 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31'AND MONTH_2_5_8_11<>0 AND SORT=7600 ;
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+				 10. Send email to QA team that 
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
+Hi Saritha,
+
+ETL processing is completed for Certification Metrics in PROD
+Can you please move forward with next steps.
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+select * from IDS_NE.T_METRIC_AVLBLTY_OF_FED_REPORTS WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_CASE_MGMT WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_CONSUMER_DATA WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_DATA_PROPOGATION WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_INC_DATA_POOL WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_INVESTIGATION_ACTIVITY WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_PI_REPORT WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_QUERY_RETURN_TIME WHERE FILE_DATE = '2026-08-31';
+select * from IDS_NE.T_METRIC_SYSTEM_AVAILABILITY WHERE FILE_DATE = '2026-08-31';
+
+SELECT * FROM IDS_NE.T_DATA_PROPOGATION ORDER BY LOAD_DATE  DESC;
+SELECT * FROM IDS_NE.T_DATA_PROPOGATION
+WHERE FILE_DATE = '2026-05-01';
+

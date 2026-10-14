@@ -1,0 +1,635 @@
+
+----------------------------ICM Outage----------------------------------------------
+
+UPDATE IDS_NE.T_UNPLAN_OUTAGE SET INCIDENT_DATE ='2026-01-06' WHERE INCIDENT_ID ='INC0143720'
+
+INSERT INTO IDS_NE.T_UNPLAN_OUTAGE (INCIDENT_ID, INCIDENT_DATE, ENVIRONMENT, START_TIME, END_DATE, OUTAGE_MINUTES) VALUES 
+('INC0156301', '2026-03-30', 'ICM', '2026-03-30 07:36:00', '2026-03-30 09:20:00', 104);
+
+INC0156301 
+
+--------------------------------------------------------------------------
+
+
+Discuss if  we can schedule on first of every month base tables in RunDeck
+
+---------------------------------------------------------------------------------------------------------------------------
+			1.  Run two Jobs below on first of every month with FILE_DATE = end of last month
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------
+S_CERT_METRICS_RPT_837
+---------------------------------------
+Current job parameters:
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+FILE_DATE=2026-05-31
+
+
+---------------------------------------
+S_CERT_METRICS_RPT_NCPDP
+---------------------------------------
+
+Current job parameters:
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+FILE_DATE=2026-05-31
+
+---------------------------------------------------------------------------------------------------------------------------
+			1a. Validate T_REPORT_RUNTIME_METRIC for coulle of report and run Update if needed 
+---------------------------------------------------------------------------------------------------------------------------
+select REPORT_NAME , count(*)
+FROM IDS_NE.T_REPORT_RUNTIME_METRIC
+group by REPORT_NAME
+order by REPORT_NAME
+
+There should be no duplicate report names with different names :
+HIAPRV008 Provider Participation Analysis Report
+Claim lines Summary Report
+
+If dupes found update names:
+
+UPDATE IDS_NE.T_REPORT_RUNTIME_METRIC
+SET REPORT_NAME = 'HIAEAE105 Member Enrollment by Benefit Program Report'
+WHERE REPORT_NAME = 'HIAEAE105 Member Enrollment by Benefit ProgrPM Report';
+
+UPDATE IDS_NE.T_REPORT_RUNTIME_METRIC
+SET REPORT_NAME = 'Claim lines Summary Report'
+WHERE REPORT_NAME = 'Claim lines Summary  Report'
+
+Claim lines Summary Report
+HIAEAE105 Member Enrollment by Benefit Program Report
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			2. Pre Data Validation - IDS_NE.T_REPORT_ALM
+---------------------------------------------------------------------------------------------------------------------------
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE file_date = '2026-06-01';           --- we should see data 
+
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE file_date = '2026-05-01';            --- we should not see data 
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			3. Email DBA Rakesh to Udpate Data in PROD01
+---------------------------------------------------------------------------------------------------------------------------
+
+UPDATE IDS_NE.T_REPORT_ALM
+SET FILE_DATE = '2026-05-01'
+WHERE FILE_DATE = '2026-06-01';
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			4. Post Update Data Validation - IDS_NE.T_REPORT_ALM
+---------------------------------------------------------------------------------------------------------------------------
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE file_date = '2026-06-01';           --- we should NOT see data 
+
+
+SELECT * FROM IDS_NE.T_REPORT_ALM
+WHERE file_date = '2026-05-01';            --- we should see data 
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			5.  SKIP THIS STEP IF CONFIDENT
+			    Get the email reports for 877 and NCPDP for the beginning of the current month  
+                We need data from beginning of previous month to end of previous month.			
+---------------------------------------------------------------------------------------------------------------------------
+
+Look in email for reports:
+			          [EXT] PRD-837 Execution Complete
+			           NCPDP and MTD execution Complete
+
+We're not interested in reports ending with _HST_RPT.pdf in the attachments.
+We're not interested in reports with no data.
+
+Get these reports in general:
+NE_MH_ENCTR_MTD_RPT.PDF  Plan ID 7600 
+NE_TC_ENCTR_MTD_RPT.PDF  Plan ID 7300
+NE_UH_ENCTR_MTD_RPT.PDF  Plan ID 7100
+
+NE_MH_NCPDP_MTD_RPT.PDF  Plan ID 7600
+NE_TC_NCPDP_MTD_RPT.PDF  Plan ID 7300
+NE_UH_NCPDP_MTD_RPT.PDF  Plan ID 7100
+
+
+For the ones with data. 
+1. Verify the Report Periods -  Beginning of month through end of month 
+2. Get Plan ID from reports
+3. Look for stats at the end of the reports:
+
+
+--------------------------------------------------------------------------------
+NE_MH_ENCTR_MTD_RPT.PDF  Plan ID 7600  Molina Healthcare of Nebraska
+--------------------------------------------------------------------------------
+Total Number of Encounters 267,140
+Encounters Rejected With Hard Errors 544
+Percentage of Encounters Accepted 99.80%
+# of Encounters Accepted With Soft Errors That Count Against Rate 2,243
+Percentage Clean Encounters W/ No Errors 99.64%
+
+
+--------------------------------------------------------------------------------
+NE_TC_ENCTR_MTD_RPT.PDF  Plan ID 7300  Nebraska Total Care
+--------------------------------------------------------------------------------
+Total Number of Encounters 286,406
+Encounters Rejected With Hard Errors 2,422
+Percentage of Encounters Accepted 99.45%
+# of Encounters Accepted With Soft Errors That Count Against Rate 321
+Percentage Clean Encounters W/ No Errors 99.35%
+
+--------------------------------------------------------------------------------
+NE_UH_ENCTR_MTD_RPT.PDF  Plan ID 7100  UnitedHealthcare Community Plan
+--------------------------------------------------------------------------------
+Total Number of Encounters 248,342
+Encounters Rejected With Hard Errors 414
+Percentage of Encounters Accepted 99.85%
+# of Encounters Accepted With Soft Errors That Count Against Rate 1,877
+Percentage Clean Encounters W/ No Errors 99.11%
+
+
+--------------------------------------------------------------------------------
+NE_MH_NCPDP_MTD_RPT.PDF  Plan ID 7600  Molina Healthcare of Nebraska
+--------------------------------------------------------------------------------
+Total Number of Encounters 131,817
+Encounters Rejected With Hard Errors 301
+Percentage of Encounters Accepted 99.77%
+# of Encounters Accepted With Soft Errors That Count Against Rate 217
+Percentage Clean Encounters W/ No Errors 99.61%
+
+--------------------------------------------------------------------------------
+NE_TC_NCPDP_MTD_RPT.PDF  Plan ID 7300  Nebraska Total Care
+--------------------------------------------------------------------------------
+Total Number of Encounters 140,807
+Encounters Rejected With Hard Errors 218
+Percentage of Encounters Accepted 99.85%
+# of Encounters Accepted With Soft Errors That Count Against Rate 153
+Percentage Clean Encounters W/ No Errors 99.74%
+
+--------------------------------------------------------------------------------
+NE_UH_NCPDP_MTD_RPT.PDF  Plan ID 7100  UnitedHealthcare Community Plan
+--------------------------------------------------------------------------------
+Total Number of Encounters 127,755
+Encounters Rejected With Hard Errors 233
+Percentage of Encounters Accepted 99.82%
+# of Encounters Accepted With Soft Errors That Count Against Rate 116
+Percentage Clean Encounters W/ No Errors 99.73%
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			6. SKIP THIS STEP IF CONFIDENT
+			   Pre-validation base tables with MTD reports, to make sure base tables are correct before running summary jobs
+---------------------------------------------------------------------------------------------------------------------------
+
+We may have to run these two jobs before running summary job for Molina Healthcare of Nebraska percentage issue:
+Compare MTD reports with base table data for each month mainly for Molina Healthcare of Nebraska using sql.
+
+Check Total Number of Encounters
+Percentage of Encounters Accepted
+Percentage Clean Encounters W/ No Errors
+
+Encounters:
+SELECT * from IDS_NE.T_MTD_DATA where report_type = '837' and FILE_DATE = '2026-05-31' ;
+SELECT * from IDS_NE.T_MCE_MTD_DATA where plan_id in ('7600','7300','7100') and PROCESSING_DATE = '2026-05-31' ORDER BY plan_id,type;
+SELECT * from IDS_NE.T_MTD_DATA ORDER BY load_date desc;
+SELECT * from IDS_NE.T_MCE_MTD_DATA ORDER BY load_date desc;
+
+NCPDP:
+SELECT * from IDS_NE.T_MTD_DATA where report_type = 'NCPDP' and FILE_DATE = '2026-05-31' ;
+SELECT * from IDS_NE.T_NCPDP_MTD_DATA where plan_id in ('7600','7300','7100') and PROCESSING_DATE = '2026-05-31' ORDER BY plan_id,type;
+SELECT * from IDS_NE.T_MTD_DATA ORDER BY load_date desc;
+SELECT * from IDS_NE.T_NCPDP_MTD_DATA ORDER BY load_date desc;
+
+
+More quries as needed:
+SELECT * from IDS_NE.T_MTD_DATA
+WHERE FILE_DATE = '2026-05-31'
+and PLAN_ID = '7600';
+
+SELECT * from IDS_NE.T_MCE_MTD_DATA ORDER BY load_date desc;
+
+SELECT * from IDS_NE.T_MCE_MTD_DATA
+WHERE LOAD_DATE = '2026-05-31'
+and PLAN_ID = '7600';
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			6a.  RERUN THESE TWO JOBS ALWAYS
+   			      ReRun jobs as needed for 837 percentage errors
+---------------------------------------------------------------------------------------------------------------------------
+
+If percentage doesn't matach run these two jobs for FILE_DATE=2026-05-31 ( end of last month)
+
+J_CERT_METRICS_RPT_MCE_03_PERCENT_OF_ENCS_ACCEPTED
+J_CERT_METRICS_RPT_MCE_06_LOAD_ACCEPTED_TO_T_MCE_MTD_DATA
+
+
+If the MTD report and Base tables match, then run summary job
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			7. Run Summary Sequence.  
+			   One Job Seq below with FILE_DATE = end of last month. This has to be run before 10-12th of each month
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------
+S_CERT_METRICS_RPT_SUMMARY_TABLES_QUARTERLY
+---------------------------------------
+
+Current job parameters:
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+FILE_DATE=2026-05-31
+
+
+
+After job tables loaded:
+
+select * from IDS_NE.T_METRIC_AVLBLTY_OF_FED_REPORTS WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_CASE_MGMT WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_CONSUMER_DATA WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_DATA_PROPOGATION WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_INC_DATA_POOL WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_INVESTIGATION_ACTIVITY WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_PI_REPORT WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_QUERY_RETURN_TIME WHERE FILE_DATE = '2026-05-31';
+select * from IDS_NE.T_METRIC_SYSTEM_AVAILABILITY WHERE FILE_DATE = '2026-05-31';
+
+counts:
+
+select 'T_METRIC_AVLBLTY_OF_FED_REPORTS' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_AVLBLTY_OF_FED_REPORTS WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_CASE_MGMT' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_CASE_MGMT WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_CONSUMER_DATA' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_CONSUMER_DATA WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_DATA_PROPOGATION' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_DATA_PROPOGATION WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_INC_DATA_POOL' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_INC_DATA_POOL WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_INVESTIGATION_ACTIVITY' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_INVESTIGATION_ACTIVITY WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_MTD_ACCEPTED_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_MTD_CLEAN_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_NCPDP_ACCEPTED_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_NCPDP_CLEAN_ECOUNTER' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_PI_REPORT' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_PI_REPORT WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_QUERY_RETURN_TIME' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_QUERY_RETURN_TIME WHERE FILE_DATE = '2026-05-31'
+UNION
+select 'T_METRIC_SYSTEM_AVAILABILITY' as TBL_NAME , count(*) as CNT from IDS_NE.T_METRIC_SYSTEM_AVAILABILITY WHERE FILE_DATE = '2026-05-31';
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+			8. This step was not need in MARCH run for FEB data.
+			Run only J_CERT_METRICS_RPT_T_METRIC_QUERY_RETURN_TIME again with end of last month as needed basis only.
+---------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------
+J_CERT_METRICS_RPT_T_METRIC_QUERY_RETURN_TIME
+---------------------------------------
+
+
+Current job parameters:
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+$APT_DEFAULT_TRANSPORT_BLOCK_SIZE=10000
+FILE_DATE=2026-05-31
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+				9. DATA VALIDATION Validation of the Table and Report
+				This should be the last step if no issues.
+---------------------------------------------------------------------------------------------------------------------------
+
+Run the queries below and compare the Data in Tables with Specific Reports.
+Compare Report name and metrics with data in the table for each report.
+
+
+
+If processing month is Jan(01) then filter should be MONTH_1_4_7_10
+If processing month is Feb(02) then filter should be MONTH_2_5_8_11
+If processing month is Mar(03) then filter should be MONTH_3_6_9_12
+
+
+SELECT * FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0;
+
+SELECT * FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0;
+
+SELECT * FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0;
+
+SELECT * FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31'AND MONTH_2_5_8_11<>0;
+
+
+
+
+Verify MTD Reports information
+Check Total Number of Encounters
+Percentage of Encounters Accepted
+Percentage Clean Encounters W/ No Errors
+
+ENCOUNTER SQLS:
+-----------------
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR  FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER 
+WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7100 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7100;
+
+
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR  FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER 
+WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7300 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7300;
+
+
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR  FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER 
+WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7600 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7600;
+
+
+
+
+NCPDP SQLS:
+------------------
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7100 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31'AND MONTH_2_5_8_11<>0 AND SORT=7100 ;
+
+
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7300 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31'AND MONTH_2_5_8_11<>0 AND SORT=7300 ;
+
+
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_2_5_8_11<>0 AND SORT=7600 
+union
+SELECT MONTH_2_5_8_11,MONTH_2_5_8_11_DENOMINATOR 
+FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31'AND MONTH_2_5_8_11<>0 AND SORT=7600 ;
+
+
+
+
+
+More queries:
+
+SELECT * FROM IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_1_4_7_10<>0;
+MCO Compliance - Accepted Encounters
+MCO Compliance - Accepted Encounters
+MCO Compliance - Accepted Encounters
+
+SELECT * FROM IDS_NE.T_METRIC_MTD_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_1_4_7_10<>0;
+Managed Care Data Quality - Clean Encounters W/ No Errors
+Managed Care Data Quality - Clean Encounters W/ No Errors
+Managed Care Data Quality - Clean Encounters W/ No Errors
+
+SELECT * FROM IDS_NE.T_METRIC_NCPDP_ACCEPTED_ECOUNTER WHERE FILE_DATE = '2026-05-31' AND MONTH_1_4_7_10<>0;
+NCPDP MCO Compliance - Accepted Encounters
+NCPDP MCO Compliance - Accepted Encounters
+NCPDP MCO Compliance - Accepted Encounters
+
+SELECT * FROM IDS_NE.T_METRIC_NCPDP_CLEAN_ECOUNTER WHERE FILE_DATE = '2026-05-31'AND MONTH_1_4_7_10<>0;
+NCPDP Managed Care Data Quality - Clean Encounters W/ No Errors
+NCPDP Managed Care Data Quality - Clean Encounters W/ No Errors
+NCPDP Managed Care Data Quality - Clean Encounters W/ No Errors
+
+
+---------------------------------------------------------------------------------------------------------------------------
+				 10. This step was not needed in MAR for Feb data
+				    In case of mismatch, Update DB2 table IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER as needed 
+				    when Report and Table are showing incorrect percentages and count etc 
+					or rerun jobs by veryfying souce sql 
+					J_CERT_METRICS_RPT_MCE_03_PERCENT_OF_ENCS_ACCEPTED
+					J_CERT_METRICS_RPT_MCE_06_LOAD_ACCEPTED_TO_T_MCE_MTD_DATA
+---------------------------------------------------------------------------------------------------------------------------
+
+
+For example this was used in Jan:
+
+
+SELECT * from IDS_NE.T_MTD_DATA
+WHERE FILE_DATE = '2026-05-31'
+and PLAN_ID = '7600';
+
+SELECT * from IDS_NE.T_MCE_MTD_DATA ORDER BY load_date desc
+
+
+
+SELECT * from IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER
+WHERE FILE_DATE = '2026-05-31'
+and AREA = 'Molina Healthcare of Nebraska'
+and SORT = '7600';
+
+
+UPDATE IDS_NE.T_METRIC_MTD_ACCEPTED_ECOUNTER
+SET 
+MONTH_3_6_9_12=99.76,
+QUARTER=99.53
+WHERE FILE_DATE = '2026-05-31'
+and AREA = 'Molina Healthcare of Nebraska'
+and SORT = '7600';
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+				 11. This step was not needed in MAR for Feb data
+				 In case of mismatch - After DB2 table is updated run Summary Job or Base job for the one impacted
+---------------------------------------------------------------------------------------------------------------------------
+
+
+Run manually jobs loading into table IDS_NE.T_MCE_MTD_DATA
+
+SELECT 
+'ACCEPTED' AS TYPE,
+PLAN_ID,
+TRADING_PARTNER,
+PROCESSING_DATE,
+PERCENT_ENCS_ACCEPTED AS VALUE,
+PERCENT_ENCS_ACCEPTED_NUMERATOR  AS NUMERATOR,
+PERCENT_ENCS_ACCEPTED_DENOMINATOR AS DENOMINATOR,
+LOAD_DATE
+FROM IDS_NE.T_MTD_DATA
+WHERE REPORT_TYPE = '837'
+AND FILE_DATE = '2026-05-31';
+
+
+SELECT 
+'CLEAN' AS TYPE,
+PLAN_ID,
+TRADING_PARTNER,
+PROCESSING_DATE,
+PERCENT_CLEAN_ENCS_W_NO_ERRS AS VALUE,
+PERCENT_CLEAN_ENCS_NUMERATOR AS NUMERATOR,
+PERCENT_CLEAN_ENCS_DENOMINATOR AS DENOMINATOR,
+LOAD_DATE
+FROM IDS_NE.T_MTD_DATA
+WHERE REPORT_TYPE = '837'
+AND FILE_DATE = '2026-05-31';
+
+select * from IDS_NE.T_MCE_MTD_DATA WHERE TYPE = 'ACCEPTED' AND PROCESSING_DATE = '2026-05-31';
+select * from IDS_NE.T_MCE_MTD_DATA WHERE TYPE = 'CLEAN' AND PROCESSING_DATE = '2026-05-31';
+
+
+Reran these jobs to fix 'Molina Healthcare of Nebraska' percentage issue
+J_CERT_METRICS_RPT_MCE_03_PERCENT_OF_ENCS_ACCEPTED
+J_CERT_METRICS_RPT_MCE_06_LOAD_ACCEPTED_TO_T_MCE_MTD_DATA
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+				 12. Additional Data Modification steps taken after cert metrics was generated by QA.
+				     Updated this data in base table and reran summary sequence.
+---------------------------------------------------------------------------------------------------------------------------
+
+
+select REPORT_ROW_COUNT from IDS_NE.T_REPORT_ALM
+where FILE_DATE = '2026-02-01'
+and REPORT_NAME = 'HIACMS001 National Health Expenditure Account (NHEA) Report';
+
+
+select REPORT_ROW_COUNT from IDS_NE.T_REPORT_ALM
+where FILE_DATE = '2026-02-01'
+and REPORT_NAME = 'CMS 416';
+
+
+UPDATE IDS_NE.T_REPORT_ALM
+SET REPORT_ROW_COUNT = 'N/A'
+where FILE_DATE = '2026-02-01'
+and REPORT_NAME = 'HIACMS001 National Health Expenditure Account (NHEA) Report';
+
+
+UPDATE IDS_NE.T_REPORT_ALM
+SET REPORT_ROW_COUNT = 'N/A'
+where FILE_DATE = '2026-02-01'
+and REPORT_NAME = 'CMS 416';
+
+
+SELECT * FROM IDS_NE.T_METRIC_QUERY_RETURN_TIME 
+where FILE_DATE = '2026-05-31';
+
+SELECT AREA, S_REPORT_ROW_COUNT FROM IDS_NE.T_METRIC_QUERY_RETURN_TIME 
+where FILE_DATE = '2026-05-31';
+
+SELECT AREA, S_REPORT_ROW_COUNT FROM IDS_NE.T_METRIC_QUERY_RETURN_TIME 
+where FILE_DATE = '2026-05-31'
+and AREA = 'HIACMS001 National Health Expenditure Account (NHEA) Report'
+union
+SELECT  AREA, S_REPORT_ROW_COUNT FROM IDS_NE.T_METRIC_QUERY_RETURN_TIME 
+where FILE_DATE = '2026-05-31'
+and AREA = 'CMS 416';
+
+
+
+Run job J_CERT_METRICS_RPT_T_METRIC_QUERY_RETURN_TIME with 
+
+Current job parameters:
+PsetNeDmaConnection=(As pre-defined)
+PsetNeDmaConnection.$DB2SchemaNameAds=ADS_NE
+PsetNeDmaConnection.$DB2SchemaNameAudit=AUDIT_NE
+PsetNeDmaConnection.$DB2SchemaNameSif=SIF_NE
+PsetNeDmaConnection.$DB2SchemaNameIds=IDS_NE
+PsetNeDmaConnection.$DB2SchemaName=NE_LND
+PsetNeDmaConnection.$DB2Instance=db2inst1
+PsetNeDmaConnection.$DB2Name=BLUDB
+PsetNeDmaConnection.$DB2UserName=nedsusr
+PsetNeDmaConnection.$DB2Password=********
+PsetNeDmaConnection.$HiveURL=jdbc:ibm:hive://PANVLHIAAP09.nehealthinteractive.com:10000
+PsetNeDmaConnection.$HiveUserID=svc-iis-hive-prd
+PsetNeDmaConnection.$HivePassword=********
+PsetNeDmaConnection.$DB2SchemaNameTmsis=TMSIS_NE
+$APT_DEFAULT_TRANSPORT_BLOCK_SIZE=10000
+FILE_DATE=2026-05-31
+
+
+---------------------------------------------------------------------------------------------------------------------------
+				 14. Send email to QA team that 
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
+Hi Saritha,
+
+ETL processing is completed for Certification Metrics in PROD
+Can you please move forward with next steps.
+
+
+
+
