@@ -1,0 +1,842 @@
+00002ELI LILLY AND COMPANY                  01011991        
+00003E.R. SQUIBB & SONS, LLC.               01011991        
+00004GENENTECH, INC.                        01011991        
+00006MERCK SHARP & DOHME LLC                01011991        
+00007GLAXOSMITHKLINE LLC                    01011991        
+00008WYETH PHARMACEUTICALS LLC,             01011991        
+00009PHARMACIA AND UPJOHN COMPANY LLC       01011991        
+00013PFIZER LABORATORIES DIV PFIZER INC     01011991        
+00023ALLERGAN INC                           01011991        
+00024SANOFI-AVENTIS, US LLC                 01011991        
+00025PFIZER LABORATORIES DIV PFIZER INC     01011991        
+00026BAYER HEALTHCARE LLC                   01011991        
+00032ABBVIE INC.                            01011991        
+00037Viatris Specialty LLC                  01011991        
+00046WYETH PHARMACEUTICALS INC.             01011991        
+00049ROERIG                                 01011991        
+00051ABBVIE INC                             10011997        
+00052MERCK SHARP & DOHME LLC                01011991        
+00053CSL BEHRING L.L.C.                     01011991        
+00054HIKMA PHARMACEUTICALS USA INC.         01011991        
+00065ALCON LABORATORIES, INC.               01011991        
+00068SANOFI-AVENTIS U.S. LLC                01011991        
+00069PFIZER LABORATORIES DIV PFIZER INC     01011991        
+00071PARKE-DAVIS DIV OF PFIZER              01011991        
+00074ABBVIE INC                             01011991        
+00075SANOFI-AVENTIS U.S. LLC                01011991        
+00078NOVARTIS PHARMACEUTICALS CORPORATION   01011991        
+00085MERCK SHARP & DOHME LLC                01011991        
+00088SANOFI-AVENTIS U.S.LLC                 01011991        
+00093TEVA PHARMACEUTICALS USA, INC.         01011991        
+00096PERSON & COVEY, INC.                   04011999        
+00113L. PERRIGO COMPANY                     04302003        
+00115AMNEAL PHARMACEUTICALS OF NEW YORK LLC 01011991        
+00116XTTRIUM LABORATORIES, INC.             08172001        
+00121PAI                                    01011991        
+00131UCB, INC.                              01011991        
+00132C B FLEET COMPANY INC                  01011991        
+00143HIKMA PHARMACEUTICALS USA INC.         01011991        
+00168E FOUGERA AND CO.                      01011991        
+00169NOVO NORDISK, INC.                     01011991        
+00172TEVA PHARMACEUTICALS USA, INC          01011991        
+00173GLAXOSMITHKLINE                        01011991        
+00178MISSION PHARMACAL COMPANY              01011991        
+00185Sandoz Inc                             01011991        
+00186ASTRAZENECA PHARMACEUTICALS LP         01011991        
+00206WYETH PHARMACEUTICALS LLC,             0101199107012026
+00224KONSYL PHARMACEUTICALS, INC.           01011992        
+00228ACTAVIS PHARMA, INC.                   01011991        
+00245UPSHER-SMITH LABORATORIES, INC.        01011991        
+00254PAR HEALTH USA, LLC.                   09282018        
+00259MERZ PHARMACEUTICALS                   01011991        
+00264B. BRAUN MEDICAL INC.                  01011991        
+00281SAVAGE LABORATORIES                    01011991        
+00299GALDERMA LABORATORIES, L.P.            10312024        
+00310ASTRAZENECA PHARMACEUTICALS LP         01011991        
+00338BAXTER HEALTHCARE CORPORATION          01011991        
+00378MYLAN PHARMACEUTICALS, INC.            01011991        
+00406SPEC GX, LLC                           10011991        
+00407GE HEALTHCARE, INC.                    07052011        
+00409HOSPIRA, INC.                          10282004        
+00430ALLERGAN, INC.                         01011998        
+00456ALLERGAN, INC.                         01011991        
+00469ASTELLAS PHARMA US, INC.               01011991        
+00472ACTAVIS PHARMA, INC.                   01011991        
+00480Teva Pharmaceuticals, Inc.             03012022        
+00485EDWARDS PHARMACEUTICALS, INC.          01011991        
+00486BEACH PHARMACEUTICALS                  01011991        
+00487NEPHRON PHARMACEUTICALS CORPORATION    04011992        
+00517AMERICAN REGENT, INC.                  10011991        
+00527LANNETT COMPANY, INC.                  07011994        
+00536RUGBY LABORATORIES                     01011991        
+00548AMPHASTAR PHARMACEUTICALS, INC.        10222012        
+00555TEVA PHARMACEUTICALS USA, INC          01011991        
+00562Kedrion Biopharma Inc                  01182013        
+00574PADAGIS US LLC                         01011991        
+00575TEVA PHARMACEUTICALS USA, INC          10011991        
+00591ACTAVIS PHARMA, INC.                   03292001        
+00597BOEHRINGER INGELHEIM PHARMACEUTICALS   01011991        
+00603PAR HEALTH USA, LLC.                   01011991        
+00641HIKMA PHARMACEUTICALS USA INC.         01011991        
+00642EXELTIS USA, INC.                      01011991        
+00682MARNEL PHARMACEUTICALS, LLC            01011991        
+00703TEVA PARENTERAL MEDICINES INC          07011992        
+00713COSETTE PHARMACEUTICALS, INC.          07011991        
+00777DISTA PRODUCTS COMPANY                 01011991        
+00781SANDOZ                                 01011991        
+00832UPSHER-SMITH LABORATORIES, LLC.        01011991        
+00904MAJOR PHARMACEUTICALS                  01011991        
+00941Vantive US Healthcare LLC              0401201007012026
+00944Takeda Pharmaceuticals America, Inc.   01011991        
+00955WINTHROP U.S.                          01011996        
+00990ICU MEDICAL INC.                       07122018        
+00998ALCON LABORATORIES, INC.               01011991        
+10019BAXTER HEALTHCARE CORPORATION          06282001        
+10094AQUESTIVE THERAPEUTICS                 12052018        
+10122CHIESI USA, INC.                       04262005        
+10144Merz Pharmaceuticals, LLC, a subsidiary05272005        
+10147PATRIOT PHARMACEUTICALS, LLC.          01132005        
+10148COTHERIX, INC.                         09062018        
+10370PAR HEALTH USA, LLC.                   05142007        
+10454SOLSTICE NEUROSCIENCES, LLC.           10182005        
+10542HILLESTAD PHARMACEUTICALS USA          04011994        
+10572AFFORDABLE PHARMACEUTICALS, LLC        11012004        
+10599INTERSECT ENT, INC.                    02122018        
+10631SUN PHARMACEUTICALS INDUSTRIES, INC.   07202005        
+10702KVK-TECH, INC.                         10102006        
+11527SHEFFIELD PHARMACEUTICALS              04282020        
+11534SUNRISE PHARMACEUTICAL, INC.           10122015        
+11797Italfarmaco SPA                        08282024        
+11980ALLERGAN INC                           01011991        
+11994LANTHEUS MEDICAL IMAGING, INC.         10062010        
+12496INDIVIOR INC.                          01011994        
+12830R.A. MCNEIL COMPANY                    01011991        
+13107Aurolife Pharma LLC                    06022005        
+13517E5 PHARMA, LLC                         01302017        
+13533GRIFOLS USA, LLC                       07212005        
+13668TORRENT PHARMACEUTICALS LIMITED        07022007        
+13811TRIGEN LABORATORIES, LLC               01092006        
+13925SETON PHARMACEUTICALS, LLC             1118200807012026
+14539HERITAGE PHARMACEUTICALS, INC.         07292019        
+14789NEXUS PHARMACEUTICALS, INC.            01092018        
+15054IPSEN BIOPHARMACEUTICALS               01262006        
+15370CARWIN PHARMACEUTICAL ASSOCIATES, LLC. 06162006        
+15584GILEAD SCIENCES, LLC.                  07012006        
+16252Teva Pharmaceuticals USA, Inc.         06012006        
+16571Rising Pharma Holdings, Inc.           01172006        
+16714NORTHSTAR RX LLC                       01152008        
+16729ACCORD HEALTHCARE INC.                 03102008        
+17270ARMSTRONG PHARMACEUTICALS, INC.        02212025        
+17433Quest Products, LLC                    12132006        
+17772SUPERNUS PHARMACEUTICALS, INC.         01242013        
+18657ANTARES PHARMA, INC.                   02032012        
+21724INDEPENDENCE PHARMACEUTICALS, LLC      05282014        
+21922ENCUBE ETHICALS PVT. LTD.              09052019        
+23155HERITAGE PHARMACEUTICALS, INC.         11092006        
+23359CENTURION LABS, LLC                    01062010        
+23594AYTU THERAPEUTICS, LLC                 04242014        
+23635SPEC GX, LLC.                          02052007        
+24201Hikma Pharmaceuticals USA Inc          01302018        
+24208BAUSCH & LOMB INC.                     01011991        
+24338AZURITY PHARMACEUTICALS INC.           08012007        
+24385AMERISOURCE BERGEN                     10011991        
+24478NEXTWAVE PHARMACEUTICALS, INC.         06072007        
+24492PARI RESPIRATORY EQUIPMENT, INC.       01222015        
+24658PURACAP LAB. DBA BLU PHARMACEUTICALS   12112011        
+24689APNAR PHARMA LP                        12102024        
+24979Upsher-Smith Laboratories, LLC.        01292015        
+25021SAGENT PHARMACEUTICALS, INC.           08062008        
+25208MEDICURE INTERNATIONAL, INC.           05152008        
+25357Glaukos Corporation                    01242024        
+25682ALEXION PHARMACEUTICALS                04112007        
+27241AJANTA PHARMA LIMITED                  04292014        
+27437LUPIN PHARMACEUTICALS, INC.            03312007        
+27505MDD US OPERATIONS, LLC.                08012012        
+27808Cranbury Pharmaceuticals, LLC          11302010        
+28595ALLEGIS PHARMACEUTICALS LLC            07052007        
+29300UNICHEM PHARMACEUTICALS (USA), INC.    08252008        
+29978CAPITAL PHARMACEUTICAL, LLC            03252009        
+30237DENDREON PHARMACEUTICALS LLC           07302010        
+30698VALIDUS PHARMACEUTICALS, LLC.          07052007        
+31722CAMBER PHARMACEUTICALS, INC.           10032007        
+33342MACLEODS PHARMACEUTICALS LIMITED       07122012        
+35573BUREL PHARMACEUTICALS                  03212011        
+36000BAXTER HEALTHCARE CORPORATION          06012018        
+39328PATRIN PHARMA, INC.                    06272016        
+39822XGEN PHARMACEUTICALS DJB, INC.         04132000        
+42023PAR HEALTH USA, LLC.                   01172008        
+42192ACELLA PHARMACEUTICALS, LLC            09282018        
+42195XSPIRE PHARMA LLC                      09192012        
+42227Takeda Pharmaceuticals America, Inc.   01012009        
+42292MYLAN INSTITUTIONAL INC.               07242015        
+42358SENTYNL THERAPEUTICS, INC.             06172015        
+42367EAGLE PHARMACEUTICALS, INC.            07282014        
+42385LAURUS LABS PRIVATE LIMITED            04272018        
+42388EXELIXIS, INC.                         02122013        
+42457EMMAUS MEDICAL, INC.                   08122008        
+42494CAMERON PHARMACEUTICALS, LLC.          09072016        
+42543VENSUN PHARMACEUTICALS, INC.           08132014        
+42571MICRO LABS LIMITED                     04292013        
+42658HISUN PHARMACEUTICALS USA, INC.        08052019        
+42667ACERUS PHARMACEUTICALS CORPORATION     08312020        
+42702PARAGON BIOTECK, INC.                  07162013        
+42747KYOWA KIRIN, INC,                      12242008        
+42794SIGMAPHARM LABORATORIES, LLC           01272012        
+42799EDENBRIDGE PHARMACEUTICALS LLC         12162009        
+42806EPIC PHARMA LLC                        01262010        
+42858RHODES PHARMACEUTICALS L.P.            12022009        
+43066BAXTER HEALTHCARE CORPORATION          08122011        
+43068VANDA PHARMACEUTICALS, INC.            07302009        
+43376UCB, INC.                              01312011        
+43386LUPIN PHARMACEUTICALS, INC.            06092009        
+43393GENBIOPRO, INC.                        01222013        
+43485APRECIA PHARMACEUTICALS, LLC           04252016        
+43538Eurofarma, Inc.                        12302008        
+43547SOLCO HEALTHCARE USA, LLC              05122009        
+43598DR. REDDY'S LABORATORIES, INC.         04182011        
+43975ANI PHARMACEUTICALS, INC.              02112014        
+44087EMD SERONO, INC.                       10011991        
+44206CSL BEHRING AG                         11202001        
+44523BIOCOMP PHARMA, INC.                   01202009        
+44567WG CRITICAL CARE, LLC                  04282009        
+45043MANCHESTER PHARMACEUTICALS CORPORATION 01142010        
+45629Aveo Pharmaceuticals, Inc              04132021        
+45802PADAGIS ISRAEL PHARMACEUTICALS LTD.    01011991        
+45861Pharmaceutica North America, Inc.      0130202507012026
+45963ACTAVIS PHARMA, INC.                   10152009        
+46122AMERISOURCE BERGEN                     07052010        
+46287CMP PHARMA, INC.                       10011993        
+46672MIKART INC.                            01011991        
+46783MERZ NORTH AMERICA, INC.               03282013        
+47335SUN PHARMACEUTICALS INDUSTRIES, INC.   12302009        
+47426HERON THERAPEUTICS, INC.               09142016        
+47781ALVOGEN INC.                           01292010        
+47783Takeda Pharmaceuticals America, Inc.   01282010        
+47918MANNKIND CORPORATION                   10202016        
+49230FRESENIUS MEDICAL CARE NORTH AMERICA   01222007        
+49348STRATEGIC SOURCING SERVICES LLC        01011991        
+49401GLAXOSMITHKLINE LLC                    03292011        
+49483TIME CAP LABORATORIES, INC.            10011992        
+49502Viatris Specialty LLC                  01011991        
+49591Kamada Ltd.                            10112023        
+49702VIIV HEALTHCARE COMPANY                10192010        
+49708SUN PHARMACEUTICALS INDUSTRIES, INC.   01042010        
+49771Mobius Therapeutics, LLC               12162025        
+49884PAR HEALTH USA, LLC.                   01011991        
+50102AFAXYS PHARMA, INC.                    01172013        
+50111TEVA PHARMACEUTICALS USA, INC          01011991        
+50222LEO PHARMA INC.                        02232010        
+50228SCIEGEN PHARMACEUTICALS, INC.          10112018        
+50242GENENTECH, INC.                        01011991        
+50261Mayne Pharma LLC                       10232019        
+50268AVPAK                                  09252017        
+50419BAYER HEALTHCARE PHARMACEUTICALS, INC  01011991        
+50458JANSSEN PHARMACEUTICALS, INC           01011991        
+50474UCB, INC.                              01011991        
+50742INGENUS PHARMACEUTICALS, LLC           03252011        
+50844LNK INTERNATIONAL, INC.                10011996        
+50881INCYTE CORPORATION                     12082011        
+50967WOMENS CHOICE PHARMACEUTICALS          05132011        
+50991POLY PHARMACEUTICALS, INC.             01011991        
+51079MYLAN INSTITUTIONAL, INC               01011991        
+51097Alexza Pharmaceuticals Inc.            05302023        
+51144SEAGEN INC.                            09262011        
+51167VERTEX PHARMACEUTICALS, INC.           03142011        
+51224TAGI PHARMA, INC                       04072011        
+51248ASTELLAS PHARMA US, INC.               01142005        
+51285TEVA WOMENS HEALTH INC                 01011991        
+51525Mylan Pharmaceuticals Inc              07202010        
+51660OHM PHARMACEUTICALS, INC.              04252005        
+51672Sun Pharmaceutical Industries, Inc.    01011991        
+51754EXELA PHARMA SCIENCES                  01232015        
+51759TEVA PHARMACEUTICALS USA, INC          10292013        
+51801NOMAX, INC.                            07011995        
+51862MAYNE PHARMA INC.                      06152011        
+51991BRECKENRIDGE PHARMACEUTICAL, INC.      01011991        
+52015MERCK SHARP & DOHME LLC                06222011        
+52054AMEDRA PHARMACEUTICALS, LLC            07202010        
+52244ENDO USA, INC.                         10072011        
+52246PARAPRO, LLC                           01182011        
+52268BRAINTREE LABORATORIES INC.            01011991        
+52276RECORDATI RARE DISEASES                12152010        
+52427ALMATICA  PHARMA, LLC.                 08092011        
+52536WILSHIRE PHARMACEUTICALS, INC.         03092011        
+52544ACTAVIS PHARMA, INC.                   01011991        
+52652AZURITY PHARMACEUTICALS, INC.          08282013        
+52658Citius Pharmaceuticals, Inc.           12172025        
+52709ALK-Abello A S                         03162023        
+52747U.S. PHARMACEUTICAL CORPORATION        07092025        
+52817TRUPHARMA, LLC                         07192016        
+52856PTC THERAPEUTICS, INC.                 09202018        
+53097THE PHARMA NETWORK, LLC                03022016        
+53436VIFOR PHARMA, INC.                     10302015        
+53451AZURITY PHARMACEUTICALS INC.           06062013        
+53489SUN PHARMACEUTICAL INDUSTRIES, INC.    01011991        
+53746AMNEAL PHARMACEUTICALS OF NEW YORK LLC 01011991        
+54092TAKEDA PHARMACEUTICALS AMERICA, INC.   04011993        
+54123OREXO US, INC.                         07242013        
+54436ANTARES PHARMA, INC.                   10292013        
+54482LEADIANT BIOSCIENCES, INC.             01011991        
+54505LINEAGE THERAPEUTICS INC.              05212013        
+54643SANDOZ MANUFACTURING INC               11172000        
+54766SEBELA PHARMACEUTICALS, INC.           07212015        
+54828Life Molecular Imaging, Ltd            10312025        
+54838LANNETT COMPANY, INC.                  01011991        
+54859LLORENS PHARMACEUTICALS INT'L DIVISION 07182001        
+54879STI PHARMA, LLC                        0525201207012026
+55111DR. REDDY'S LABORATORIES, INC.         11082002        
+55135GILEAD SCIENCES, INC.                  04292020        
+55150Eugia US LLC                           09132012        
+55253CIMA LABS, INC.                        04012007        
+55292RECORDATI RARE DISEASES, INC.          10222013        
+55466NEOLPHARMA, INC.                       03042016        
+55494DUCHESNAY USA, INC.                    04122013        
+55513AMGEN INC.                             01011991        
+55566FERRING PHARMACEUTICALS, INC.          04011994        
+55670MOORE MEDICAL                          05012020        
+55724PFIZER LABORATORIES DIV PFIZER INC.    10062014        
+57237Rising Pharma Holdings, Inc.           06262013        
+57664SUN PHARMACEUTICAL INDUSTRIES, INC.    01011991        
+57665LEADIANT BIOSCIENCES, INC.             0101199104012026
+57841REDHILL BIOPHARMA, LTD.                03302020        
+57844TEVA PHARMACEUTICALS USA, INC.         01011991        
+57894JANSSEN BIOTECH, INC                   01011999        
+57962PHARMACYCLICS, LLC.                    11222013        
+57970ALLERGAN, INC.                         07092014        
+58151Viatris Specialty LLC                  10032023        
+58284BRAEBURN, INC.                         07182023        
+58394WYETH BIOPHARMA DIVISION OF WYETH      01011997        
+58406IMMUNEX CORPORATION                    01011991        
+58468GENZYME CORPORATION                    01011991        
+58657METHOD PHARMACEUTICALS                 12312014        
+58809GM PHARMACEUTICALS, INC.               07011998        
+58914ALLERGAN, INC.                         01011992        
+59011PURDUE PHARMA, L.P.                    01011996        
+59088PURETEK CORPORATION                    07182011        
+59137MEDEXUS PHARMA, INC.                   08202014        
+59148OTSUKA AMERICA PHARMACEUTICALS, INC.   07011992        
+59310TEVA RESPIRATORY, LLC                  10011992        
+59338AMAG PHARMACEUTICALS, INC.             07232009        
+59353VIFOR (INTERNATIONAL) INC.             10312017        
+59365COOPER SURGICAL INC.                   04242018        
+59385BIODELIVERY SCIENCES INTERNATIONAL, INC09302014        
+59417TAKEDA PHARMACEUTICALS AMERICA, INC.   06222007        
+59467HIKMA SPECIALTY USA INC.               09232015        
+59528NEPHRO-TECH, INC.                      10011992        
+59572CELGENE CORPORATION                    10011997        
+59617STALLERGENES, INC.                     09262014        
+59627BIOGEN IDEC MA, INC.                   10011996        
+59630SHIONOGI INC.                          04011993        
+59651AUROBINDO PHARMA USA, INC.             08162016        
+59676JANSSEN PRODUCTS, LP                   07011993        
+59746JUBILANT CADISTA PHARMACEUTICALS, INC. 03142006        
+59762Mylan Pharmaceuticals Inc              07011993        
+59767DIGESTIVE CARE, INC.                   08072012        
+59922AKEBIA THERAPEUTICS, INC.              09262014        
+59923AREVA PHARMACEUTICALS                  12192014        
+60219AMNEAL PHARMACEUTICALS                 01282021        
+60505APOTEX CORP.                           01011994        
+60631AZURITY PHARMACEUTICALS INC.           08222014        
+60687AMERICAN HEALTH PACKAGING              04082015        
+60758PACIFIC PHARMA, INC.                   07011997        
+60793PFIZER LABORATORIES DIV PFIZER INC.    10011994        
+60842KALEO, INC                             01022023        
+60846AMNEAL PHARMACEUTICALS LLC             07032014        
+60923SAREPTA THERAPEUTICS INC.              10052015        
+60951PAR HEALTH USA, LLC.                   04011994        
+60977BAXTER HEALTHCARE CORPORATION          02172004        
+61168KYTHERA BIOPHARMACEUTICALS INC.        12202021        
+61269H2-PHARMA, LLC                         05202014        
+61314SANDOZ INC.                            01011995        
+61442CARLSBAD TECHNOLOGY, INC.              04302008        
+61476GC Biopharma USA, Inc.                 07292024        
+61570PFIZER LABORATORIES DIV PFIZER INC.    01011995        
+61703HOSPIRA, INC.                          10282004        
+61755REGENERON PHARMACEUTICALS, INC.        03282008        
+61825Galt Pharmaceuticals LLC               01272023        
+61874ALLERGAN, INC.                         01062016        
+61953GRIFOLS USA, LLC                       03152004        
+61958GILEAD SCIENCES, INC.                  04011996        
+61990APOLLO PHARMACEUTICALS INC.            08192019        
+62011STRATEGIC SOURCING SERVICES LLC        12152011        
+62037ACTAVIS PHARMA, INC.                   04011997        
+62064THERATECHNOLOGIES INC.                 04302014        
+62135CHARTWELL RX LLC                       07032014        
+62175LANNETT COMPANY, INC.                  04011996        
+62225OMEROS CORPORATION                     04022015        
+62332ALEMBIC PHARMACEUTICALS INC.           10062015        
+62484NOVA LABORATORIES, LTD                 06252014        
+62542NEOS THERAPEUTICS, LP                  01222015        
+62559ANI PHARMACEUTICALS, INC.              04082006        
+62584AMERICAN HEALTH PACKAGING              07011997        
+62756SUN PHARMACEUTICAL INDUSTRIES INC.     04262006        
+62856EISAI INC.                             01011997        
+62935TOLMAR, INC.                           06022014        
+63004MALLINCKRODT ARD LLC.                  04112002        
+63010AGOURON                                01011997        
+63020TAKEDA PHARMACEUTICALS AMERICA INC.    02212003        
+63090ACADIA PHARMACEUTICALS, INC.           05262016        
+63304SUN PHARMACEUTICALS INDUSTRIES, INC.   10011997        
+63323FRESENIUS KABI USA, LLC                04011998        
+63395DAIICHI SANKYO, INC.                   10011997        
+63402Sumitomo Pharma America, Inc.          04011999        
+63459CEPHALON, INC.                         04011999        
+63481ENDO USA, INC.                         04011998        
+63561Granulation Technology, Inc.           11192025        
+63646TOLMAR, INC.                           01302017        
+63704PHARMACIST PHARMACEUTICAL LLC          05242013        
+63739MCKESSON CORPORATION DBA SKY PACKAGING 01011998        
+63833CSL BEHRING GMBH                       06122009        
+64193Takeda Pharmaceuticals America, Inc.   03242000        
+64208BIO PRODUCTS LABORATORY                07012011        
+64281Methapharm Inc.                        03312026        
+64370PIERRE FABRE PHARMACEUTICALS, INC.     05142008        
+64376ENDO USA, INC.                         01011999        
+64380STRIDES PHARMA SCIENCE LIMITED         07232013        
+64406BIOGEN INC.                            04292013        
+64597AVANIR PHARMACEUTICALS, INC.           08092007        
+64661JAYMAC PHARMACEUTICALS LLC             01262005        
+64720COREPHARMA, LLC                        07252006        
+64764TAKEDA PHARMACEUTICALS AMERICA, INC.   10011999        
+64842TAIHO PHARMACEUTICAL CO., LTD.         10142015        
+64850Elite Laboratories, Inc.               04142023        
+64875DANCO LABORATORIES, LLC                01212001        
+64896AMNEAL PHARMACEUTICALS LLC             03232012        
+64950LEHIGH VALLEY TECHNOLOGIES, INC.       10072010        
+64980Rising Pharma Holdings, Inc.           10011999        
+65038CORIUM LLC.                            07262021        
+65086SANTEN, INC.                           10072022        
+65145Caplin Steriles Limited                01302025        
+65162AMNEAL PHARMACEUTICALS LLC             12171999        
+65219FRESENIUS KABI USA LLC                 05262020        
+65250Pacira Pharmaceuticals, Inc.           12062022        
+65597DAIICHI SANKYO, INC.                   08022000        
+65628AZURITY PHARMACEUTICALS, INC.          05312018        
+65757ALKERMES, INC.                         04302009        
+65862AUROBINDO PHARMA LTD.                  12292004        
+66215ACTELION PHARMACEUTICALS U.S., INC.    07092001        
+66220CUMBERLAND PHARMACEUTICALS, INC.       02012007        
+66302UNITED THERAPEUTICS CORPORATION        06192002        
+66582MERCK SHARP & DOHME LLC                07292002        
+66658SWEDISH ORPHAN BIOVITRUM AB            12152008        
+66685SANDOZ INC                             12312001        
+66689VISTAPHARM, INC.                       10292004        
+66733IMCLONE LLC                            12312003        
+66758SANDOZ INC.                            05142002        
+66794PIRAMAL CRITICAL CARE                  01312018        
+66869KOWA PHARMACEUTICALS AMERICA INC.      04282002        
+66887ENDO USA, INC.                         04072003        
+66993PRASCO LABORATORIES                    06052002        
+67066ChiRhoClin, Inc.                       06042025        
+67108BAXTER HEALTHCARE CORPORATION          09292005        
+67112MEDECOR PHARMA, LLC                    11252002        
+67253PAR HEALTH USA, LLC.                   10102002        
+67308Sun Pharmaceutical Industries, Inc.    11252015        
+67386LUNDBECK PHARMACEUTICALS, LLC          08182003        
+67457MYLAN INSTITUTIONAL LLC.               02052009        
+67618Atlantis Consumer Healthcare, Inc.     02272004        
+67877ASCEND LABORATORIES, L.L.C.            12282007        
+67919MERCK SHARP & DOHME LLC                10242003        
+67979ENDO USA, INC.                         07312007        
+68001BLUEPOINT LABORATORIES                 04082013        
+68002American Health Packaging              10232025        
+68025VERTICAL PHARMACEUTICALS, LLC          02242004        
+68047LARKEN LABORATORIES, INC.              07152003        
+68084AMERICAN HEALTH PACKAGING              06022004        
+68094PRECISION DOSE, INC.                   06142004        
+68118Esteve Pharmaceuticals, LLC            10282025        
+68134PALMETTO PHARMACEUTICALS, INC.         07022013        
+68135BIOMARIN PHARMACEUTICAL, INC.          05242004        
+68180LUPIN PHARMACEUTICALS, INC.            03022004        
+68220Viatris Specialty LLC                  10032003        
+68308MAYNE PHARMA INC.                      12012003        
+68382ZYDUS PHARMACEUTICALS (USA) INC.       07072005        
+68418BIOCODEX, INC.                         04172019        
+68462GLENMARK PHARMACEUTICALS, INC., USA    01272005        
+68516GRIFOLS USA, LLC                       04302004        
+68546TEVA NEUROSCIENCE, INC.                07272006        
+68547La Jolla Pharmaceutical Company        10012025        
+68599MCKESSON MEDICAL SURGICAL              05012020        
+68611ANI Pharmaceuticals, Inc               12192014        
+68645LEGACY PHARMACEUTICAL PACKAGING, LLC   10302008        
+68727JAZZ PHARMACEUTICALS, INC.             07012006        
+68791ROYAL PHARMACEUTICALS, LLC.            09112013        
+68817ABRAXIS BIOSCIENCE, LLC                07012005        
+68850STI PHARMA, LLC                        1025200604012026
+68875Takeda Pharmaceuticals America, Inc.   01232013        
+68968NOVEN THERAPEUTICS, LLC.               07272005        
+68974TRAVERE THERAPEUTICS, INC              01152016        
+68982OCTAPHARMA USA, INC.                   01092015        
+68992VELOXIS PHARMACEUTICALS                10272015        
+69076FLORIDA PHARMACEUTICAL PRODUCTS, LLC   01222016        
+69087TOLMAR, INC.                           05232023        
+69097CIPLA USA, INC.                        12102014        
+69102OWP PHARMACEUTICALS                    01272016        
+69117YILING PHARMACEUTICAL, INC             0209201607012026
+69230CAMBER CONSUMER CARE INC.              06282019        
+69238AMNEAL PHARMACEUTICALS, LLC            10152014        
+69292AMICI PHARMACEUTICALS LLC              10302018        
+69315LEADING PHARMA, LLC                    06292015        
+69339NATCO PHARMA USA                       04252016        
+69367WESTMINSTER PHARMACEUTICALS, LLC.      11092015        
+69387BANNER LIFE SCIENCES LLC               08112015        
+69448ACCORD BIOPHARMA INC.                  10252016        
+69452BIONPHARMA, INC.                       09262015        
+69488ADVANCED ACCELERATOR APPLICATIONS USA, 05012018        
+69516INTERCEPT PHARMACEUTICALS, INC.        06302016        
+69528Metacel Pharmaceuticals                07312025        
+69543VIRTUS PHARMACEUTICALS, LLC            02192015        
+69547EMERGENT DEVICES INC.                  12102015        
+69557SCILEX PHARMACEUTICALS                 08292018        
+69584OXFORD PHARMACEUTICALS, LLC            03082018        
+69616CATALYST PHARMACEUTICALS, INC.         01292019        
+69639HELSINN THERAPEUTICS (U.S.), INC.      02172017        
+69656GLAXOSMITHKLINE LLC                    1030201504012026
+69660CLOVIS ONCOLOGY, INC.                  01172017        
+69680VITRUVIAS THERAPEUTICS, INC.           01232018        
+69751EVOFEM, INC.                           08272020        
+69794ULTRAGENYX PHARMACEUTICAL INC.         12122017        
+69800ADMA BIOLOGICS, INC.                   10312019        
+69809HLS THERAPEUTICS (USA), INC.           07032017        
+69853ALEXION PHARMACEUTICALS, INC.          04192019        
+69880Amryt Pharmaceuticals DAC              07272020        
+69911CSL BEHRING LEGNAU AG                  04292016        
+69918NORDIC PHARMA, INC                     10272015        
+69932BLUE EARTH DIAGNOSTICS LIMITED         12192018        
+69945Curium US LLC                          09302025        
+70000CARDINAL HEALTH 110, LLC. DBA LEADER   01032017        
+70010GRANULES PHARMACEUTICALS, INC.         08152018        
+70020R-PHARM US LLC.                        01202016        
+70069SOMERSET THERAPEUTICS, LLC.            07152016        
+70095Sun Pharmaceutical Industries Limited  08222023        
+70114COHERUS BIOSCIENCES, INC.              01032019        
+70121AMNEAL PHARMACEUTICALS LLC             07122016        
+70127Jazz Pharmaceuticals, Inc.             10142018        
+70165NEOS THERAPEUTICS BRANDS, LLC          03222016        
+70183LEXICON PHARMACEUTICALS, INC.          03272017        
+70199CASPER PHARMA LLC                      03032017        
+70211TYCHASIS CORPORATION                   11162015        
+70255ARRAY BIOPHARMA INC.                   08012018        
+70257SAOL THERAPEUTICS, INC.                04272017        
+70301OPKO PHARMACEUTICALS, LLC              10272016        
+70347ARALEZ PHARMACEUTICALS, INC.           1101201604012026
+70370NEUROCRINE BIOSCIENCES, INC.           04272017        
+70377BIOCON PHARMA INC.                     08112016        
+70382OCULAR THERAPEUTIX, INC.               06202019        
+70436SLATE RUN PHARMACEUTICALS, LLC         10312017        
+70437PUMA BIOTECHNOLOGY, INC.               07312017        
+70482ADAMAS PHARMA LLC                      12222017        
+70505ANALOG PHARMA, INC.                    01072019        
+70510MITSUBISHI TANABE PHARMA AMERICA, INC. 07312017        
+70512SOLA PHARMACEUTICALS, LLC              03012021        
+70515COVIS PHARMA US INC.                   06292016        
+70539RADIUS HEALTH, INC.                    05012017        
+70564NAPO PHARMACEUTICALS, INC.             06022016        
+70573Kedrion Biopharma, Inc                 03022022        
+70594XELLIA PHARMACEUTICALS USA, LLC        10172018        
+70621BIOFRONTERA INC.                       08062018        
+70644GENERICUS, INC.                        10262016        
+70677STRATEGIC SOURCING SERVICES LLC        09242018        
+70700XIROMED, LLC.                          04172017        
+70709CYCLE PHARMACEUTICALS, LTD.            10052017        
+70710ZYDUS PHARMACEUTICALS (USA) INC.       02102017        
+70726EDW Pharma                             10112018        
+70727ALCON LABORATORIES, INC.               04042018        
+70748LUPIN PHARMACEUTICALS INC.             12052019        
+70752QUAGEN PHARMACUETICALS LLC             10232019        
+70756LIFESTAR PHARMA LLC                    07312017        
+70792Tonix Medicines, Inc.                  07082025        
+70839NODEN PHARMA USA, INC.                 03072017        
+70842MELINTA THERAPEUTICS, INC.             10312017        
+70860ATHENEX PHARMACEUTICAL DIVISION, LLC   03092017        
+70954ANI PHARMACEUTICALS, INC.              04042018        
+71085IPG Pharmaceuticals, Inc.              01072025        
+71090STRONGBRIDGE U.S. INC.                 06082017        
+71093ACI HEALTHCARE USA, INC.               11202017        
+71104BIOVERATIV THERAPEUTICS INC.           05292018        
+71127LABORATOIRE FRANCAIS DU FRACTIONNEMENT 12072020        
+71143OPTINOSE US, INC.                      01292018        
+71225SLAYBACK PHARMA                        01312019        
+71258PROGENICS PHARMACEUTICALS, INC.        10292018        
+71269MainPointe Pharmaceuticals LLC         04282023        
+71274PHARMING HEALTHCARE INC.               04182018        
+71287KITE PHARMA, INC.                      12122017        
+71288MEITHEAL PHARMACEUTICALS, INC.         11152017        
+71321Brandywine Pharmaceuticals             01242023        
+71332RIGEL PHARMACEUTICALS, INC.            05182018        
+71334AGIOS PHARMACEUTICALS, INC.            07312018        
+71336ALNYLAM PHARMACEUTICALS, INC.          09052018        
+71349Verrica Pharmaceuticals, Inc.          08302023        
+71357Milla Pharmaceuticals                  03042025        
+71369AKARX, INC.                            08272018        
+71376IRONSHORE PHARMACEUTICALS, INC.        06062019        
+71390ACACIA PHARMA LTD                      11032020        
+71394SPARK THERAPEUTICS, INC.               01252018        
+71403EPI HEALTH, LLC                        03192019        
+71511ATHENA BIOSCIENCE LLC                  03282024        
+71558INSMED INCORPORATED                    10242018        
+71571ALCON LABORATORIES, INC.               01042019        
+71626MEDSTONE PHARMA LLC                    09302019        
+71656Saptalis Pharmaceuticals, LLC          10062023        
+71671AGILE THERAPEUTICS, INC.               10302020        
+71699SK LIFE SCIENCE, INC.                  05042020        
+71715PARATEK PHARMACEUTICALS, INC.          02042019        
+71741Redmont Pharmaceuticals LLC            10302025        
+71767SCPHARMACEUTICALS INC                  03012023        
+71770MEDUNIK USA                            04172018        
+71773TETRAPHASE PHARMACEUTICALS, INC.       10222018        
+71776EYEVANCE PHARMACEUTICALS LLC           03162020        
+71779VERASTEM, INC.                         10252018        
+71800Innovida Pharmaceutique Corporation    0130202507012026
+71837PARTNER THERAPEUTICS, INC.             01152021        
+71839BE PHARMACEUTICALS INC.                11052019        
+71860Ionis Pharmaceuticals, Inc.            01212025        
+71863ETON PHARMACEUTICALS, INC.             12032019        
+71879EYEPOINT PHARMACEUTICALS US, INC.      01102019        
+71881AIMMUNE THERAPEUTICS, INC.             03132020        
+71894NOVARTIS GENE THERAPIES, INC.          06112019        
+71904Amicus Therapeutics US, LLC            09062018        
+71921Florida Pharmaceutical Products, LLC   08092021        
+71930EYWA PHARMA                            07242018        
+71981DOMPE FARMACEUTICI S.P.A.              02042019        
+71993Atland Pharmaceuticals, LLC            01272023        
+72028HARMONY BIOSCIENCES, LLC               11062019        
+72060INTRA-CELLULAR THERAPIES, INC.         03192020        
+72064BLUEPRINT MEDICINES CORPORATION        02032020        
+72065XERIS PHARMACEUTICALS, INC.            10152019        
+72078Mylan Institutional LLC                01122021        
+72089Evoke Pharma Inc.                      01282021        
+72126AKCEA THERAPEUTICS, INC.               10312018        
+72187STEMLINE THERAPEUTICS, INC.            01282019        
+72205NOVADOZ PHARMACEUTICALS, LLC           10032018        
+72237KARYOPHARM THERAPEUTICS                07182019        
+72241Modavar Pharmaceuticals LLC            01182022        
+72245FORTE BIO-PHARMA LLC                   12052022        
+72252NEURELIS, INC.                         03052020        
+72266FOSUN PHARMA USA                       09122019        
+72319i3 Pharmaceuticals, LLC                03292022        
+72336LiFsa Drugs LLC                        07182023        
+72359Sumitomo Pharma America, Inc           12022025        
+72374Tanvex BioPharma USA, Inc.             10092025        
+72426ESPERION THERAPEUTICS, INC.            03312020        
+72482Sobi, Inc.                             04122022        
+72485ARMAS PHARMACEUTICALS INC.             09132019        
+72493UROGEN PHARMA, INC.                    06162020        
+72495MILLICENT U.S., INC.                   01232019        
+72507Stealth BioTherapeutics Inc.           12192025        
+72511AMGEN USA INC.                         10222018        
+72512AVERITAS PHARMA, INC.                  04112019        
+72516ORYZA PHARMACEUTICALS, INC.            03022021        
+72526Shandong Luye Pharmaceutical Co., Ltd. 09182023        
+72542Acer Therapeutics                      07312023        
+72572CIVICA, INC.                           10082019        
+72578VIONA PHARMACEUTICALS INC.             06072019        
+72579BeOne Medicines USA, Inc.              12052019        
+72603NORTHSTAR RX LLC                       12112019        
+72606CELLTRION USA, INC.                    06122019        
+72607EPIZYME, INC.                          01302020        
+72611ALMAJECT, INC.                         02022020        
+72618Pfizer Laboratories Div Pfizer Inc     03242020        
+72626ASEGUA THERAPEUTICS LLC                01022019        
+72664VGYAAN Pharmaceuticals LLC             07152021        
+72694SERVIER PHARMACEUTICALS LLC            10302019        
+72769BIOCRYST PHARMACEUTICALS, INC.         10262020        
+72786GLOBAL BLOOD THERAPEUTICS, INC.        1227201904012026
+72819Archis Pharma LLC                      04222022        
+72829Rhythm Pharmaceuticals, Inc.           03012021        
+72888Advagen Pharma Ltd                     03032021        
+72893ACROTECH BIOPHARMA LLC                 02042020        
+72903ImmunoGen, Inc.                        12082022        
+72928Q BIOMED, INC.                         0417202007012026
+72960Revance Therapeutics, Inc.             07182024        
+72964Liquidia Technologies, Inc.            06092025        
+72974Sumitomo Pharma America, Inc.          01212021        
+72989Acertis Pharmaceuticals                03082023        
+72990CorMedix, Inc.                         04172024        
+73042Y-mAbs Therapeutics, Inc               02112021        
+73043Devatis, Inc                           10222024        
+73059Shield TX (UK) Ltd                     08042021        
+73070NOVO NORDISK PHARMA, INC.              01062020        
+73077Fennec Pharmaceuticals, Inc.           10192022        
+73079Eiger Biopharmaceuticals Inc.          02042021        
+73090Recordati Rare Diseases Inc.           01132021        
+73116Secura Bio, Inc.                       10072021        
+73150TG THERAPEUTICS, INC.                  02252021        
+73153JUNO THERAPEUTICS, INC.                03162021        
+73154Ardelyx, Inc.                          03292022        
+73159Lacer Pharma, LLC                      03012025        
+73179Reata Pharmaceuticals, Inc.            07052023        
+73207DECIPHERA PHARMACEUTICALS, LLC         05262020        
+73289Aucta Pharmaceuticals, Inc.            02242023        
+73292NS PHARMA, INC.                        09032020        
+73302HRA PHARMA AMERICA, INC.               08202020        
+73336Sumitomo Pharma America, Inc.          04072021        
+73352Trifluent Pharma LLC                   05232022        
+73362ASCENDIS PHARMA ENDOCRINOLOGY, INC     10252021        
+73372CLINUVEL, INC                          10222021        
+73441Gamida Cell Inc.                       05252023        
+73462G1 THERAPEUTICS INC.                   03092021        
+73473SOLARIS PHARMA CORPORATION             09142020        
+73475Argenx US, Inc.                        12282021        
+73515Avvisto Therapeutics LLC               10172024        
+73521Oyster Point Pharma, Inc.              11082021        
+73534Avalo Therapeutics Inc.                0725202204012026
+73535Incyte Corporation                     08132020        
+73536Pharmaessentia Corporation             12302021        
+73554Genetix Biotherapeutics Inc.           03092023        
+73555Syndax Pharmaceuticals, Inc.           12182024        
+73556ChemoCentryx, Inc.                     10222021        
+73562Aimmune Therapeutics, Inc.             04092021        
+73594PHARMACOSMOS THERAPEUTICS INC          11062020        
+73604Kiniksa Pharmaceuticals (UK), Ltd.     04162021        
+73606APL Sales I LLC                        06222021        
+73607Amivas (US), LLC                       08042021        
+73625MyoKardia, Inc.                        05262022        
+73648Mesoblast, Inc.                        03272025        
+73650Provention Bio, Inc.                   12082022        
+73683Nobelpharma America, LLC               08252022        
+73684Blucrest Pharmaceuticals               01302025        
+74157INA Pharmaceutics Inc                  01242024        
+74528Albireo Pharma, Inc.                   07302021        
+74676Verity Pharmaceuticals Inc.            01082021        
+74695Mycovia Pharmaceuticals, Inc.          07182022        
+74725Telix Pharmaceuticals US Inc           06022022        
+75626AURINIA PHARMA U.S. INC.               01282021        
+75788SCYNEXIS, INC.                         07212021        
+75826WINDER LABORATORIES, LLC               10272017        
+75833Delcath Systems, Inc.                  10232025        
+75834NIVAGEN PHARMACEUTICALS INC.           06042014        
+75854AVION PHARMACEUTICALS                  07012013        
+75907DR. REDDY'S LABORATORIES, INC.         03142024        
+75987HORIZON THERAPEUTICS USA, INC.         09062011        
+76045FRESENIUS KABI USA, LLC                04182013        
+76075ONYX PHARMACEUTICAL                    07312012        
+76125KEDRION BIOPHARMA, INC                 12052011        
+76179KEDRION S.p.A.                         01262012        
+76204RITEDOSE PHARMACEUTICALS, LLC          12142011        
+76282EXELAN PHARMACEUTICALS, INC            12022011        
+76329INTERNATIONAL MEDICATION SYSTEMS, LTD  04192012        
+76336HRA PHARMA AMERICA INC.                08012018        
+76346CORCEPT THERAPEUTICS INCORPORATED      04112012        
+76385Unichem Pharmaceuticals (USA), Inc.    10302013        
+76388ASPEN GLOBAL INCORPORATED              06212012        
+76431AMRYT PHARMACEUTICALS DAC              01222013        
+76961Spectrum Pharmaceuticals, Inc.         11092022        
+78206Organon LLC                            08232021        
+78670USWM, LLC                              02092021        
+79378Mirum Pharmaceuticals, Inc.            10072021        
+79802Kadmon Pharmaceuticals, LLC            08112021        
+79952ADC Therapeutics America, Inc.         05112021        
+80005Carnegie Pharmaceuticals               09202024        
+80056INTRA-SANA LABORATORIES                04212021        
+80203Bioverativ U.S. LLC                    03162022        
+80446Immunocore Commercial LLC              02252022        
+80491Idorsia Pharmaceuticals Ltd            05032022        
+80610Arcutis Biotherapeutics, Inc.          08182022        
+80705Tripoint Therapeutics                  04222021        
+80739Mirati Therapeutics, Inc.              01172023        
+80789Upsher-Smith Laboratories, LLC         01242024        
+80803Aadi Bioscience, Inc.                  02232022        
+80830Amneal Pharmaceuticals Private Limited 10162023        
+81033Kesin Pharma Corporation               09182023        
+81092BioXcel Therapeutics, Inc.             07252022        
+81137SQ Innovation, Inc.                    01302026        
+81140Protega Pharmaceuticals LLC            09072022        
+81153Iterum Therapeutics US Limited         08272025        
+81279Pangea Pharmaceuticals, LLC            06202024        
+81284Provepharm, Inc.                       05272022        
+81298Long Grove Pharmaceuticals, LLC        09122022        
+81481Altor BioScience, LLC                  06032024        
+81520Phathom Pharmaceuticals, Inc.          12062023        
+81565Phlow Corporation                      03312022        
+81583Immedica Pharma US Inc                 08252022        
+81665Omnivium Pharmaceutical                09202022        
+81672Dermavant Sciences Inc.                06222022        
+81749Calliditas Therapeutics US Inc.        01272022        
+81802Orphalan                               05222023        
+81864GlaxoSmithKline LLC                    09292023        
+81927Shorla Oncology Inc                    05222023        
+81942Tarsus Pharmaceuticals, Inc.           08302023        
+81952Hepalink USA, Inc.                     02232022        
+81964US Antibiotics                         01252023        
+81968Axsome Therapeutics, Inc.              10202022        
+82009Quallent Pharmaceuticals Health        12162021        
+82036Zambon USA, Ltd                        0419202207012026
+82098Raya Pharmaceuticals LLC               04182025        
+82111Edenbridge Pharmaceuticals, LLC        03232022        
+82112Cytokinetics, Incorporated             01292026        
+82154pharmaand GmbH                         07282022        
+82182Pacific Pharma, Inc                    04222022        
+82194Krystal Biotech, Inc.                  07072023        
+82228BridgeBio Pharma, Inc.                 12052024        
+82249CivicaScript, LLC                      09262022        
+82260Bausch & Lomb Americas Inc.            05232023        
+82292Lumicell, Inc.                         01302025        
+82293Novugen Pharma (USA) LLC               08192022        
+82448SpringWorks Therapeutics, Inc.         12182023        
+82497Assertio Specialty Pharmaceuticals, LLC01202026        
+82568AARNA USA INC                          09022025        
+82576Madrigal Pharmaceuticals Inc.          04102024        
+82580ARS Pharmaceuticals Operations, Inc.   09272024        
+82584Thea Pharma                            01192023        
+82604Rayner Surgical Inc.                   10272023        
+82625Valinor Pharma, LLC                    04172023        
+82644Pharmaka Generics Inc.                 02272024        
+82667Harrow Eye, LLC                        10302023        
+82685Oliva Therapeutics, LLC                08152023        
+82705Genmab US, Inc.                        06022023        
+82737BiolineRx USA, Inc.                    10032023        
+82829Iveric Bio Inc.                        09082023        
+82867Agepha Pharma USA, LLC                 10232024        
+82928KalVista Pharmaceuticals, Inc.         07282025        
+82950Day One Biopharmaceuticals, Inc.       05092024        
+82958Neurotech Pharmaceuticals, Inc.        06062025        
+82959Geron Corporation                      07182024        
+82983Ajenat Pharmaceuticals LLC             01302026        
+83034Verona Pharma, Inc.                    07242024        
+83035Singular Dreamer, Ltd                  02222023        
+83047Autolus Inc.                           01092025        
+83076Xcovery Holdings Inc                   12102025        
+83107Legacy Pharma USA, Inc.                02242026        
+83148The J. Molner Company LLC              01262024        
+83205USWM, LLC                              08232024        
+83222Orchard Therapeutics (Europe) Limited  06242024        
+83245Scienture, LLC                         09232025        
+83257Biocon Biologics Inc                   08012023        
+83296X4 Pharmaceuticals, Inc.               06182024        
+83301Mullan Pharmaceutical Inc.             06062025        
+83324Chain Drug Marketing Association, Inc. 09212023        
+83368Oyster Point Pharma, Inc.              04182024        
+83390Cosette Pharmaceuticals NC Laboratories10312025        
+83468Milestone Pharmaceuticals USA, Inc.    01302026        
+83474Puro Pharma Inc.                       04242024        
+83634Avenacy Inc.                           04162024        
+83720Oncor Pharmaceuticals, LLC             06072024        
+83723Botanix SB Inc.                        12022024        
+83745Apozeal Pharmaceuticals Inc.           08202024        
+83774PILNOVA PHARMA INC                     1112202404012026
+83787LNHC, Inc.                             04292025        
+83831Avyxa Pharmaceuticals, LLC             05102024        
+83853IntraBio Inc.                          10032024        
+83860Soleno Therapeutics, Inc               04172025        
+83980IPCA LABORATORIES LTD                  10092024        
+84015Crinetics Pharmaceuticals, Inc.        10302025        
+84054Alpha Cognition USA, Inc.              03242025        
+84103Abeona Therapeutics Inc.               06182025        
+84141Arrowhead Pharmaceuticals, Inc.        12182025        
+84386Aurobindo Pharma Ltd                   05122025        
+84388Corstasis USA LLC                      01162026        
+84552Telix Innovations                      12172025        
+84635Cipher Pharmaceuticals Inc.            12232025        
+84651Nuvation Bio                           07022025        
+84696Kura Oncology, Inc.                    12192025        
+84768Precigen, Inc.                         10312025        
+85320Eddingpharm (U. S. ) Inc.              03112026        
+85437Coral Way Pharma                       12222025        
+85477Oncora Pharma                          04302025        
+85592Cumberland Assured Products Inc.       10302025        
+85622Blue Heron Pharmaceuticals LLC         01292026        
+85633Estiva Generics                        0721202507012026
+85690Invernis Pharmaceuticals, Inc.         0808202504012026
+87127Happy Robin, LLC                       12022025        
+90096Zameer Pharmaceuticals LLC             03282022        

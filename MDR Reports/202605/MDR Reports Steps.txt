@@ -1,0 +1,103 @@
+
+
+
+---------------------------------------------------------------------------------------------------------------------------
+														1. Copy Files from SFTP to Datastage
+---------------------------------------------------------------------------------------------------------------------------
+
+Hi Dipak,
+ 
+Can you please transfer below file from SFTP server to Datastage at /data/NE_DMA/NEDATA. 
+NE_RBTBL_LBLR_20260507.TXT
+
+Check File : 
+/data/NE_DMA/NEDATA/NE_RBTBL_LBLR_20260507.TXT
+
+---------------------------------------------------------------------------------------------------------------------------
+														2. Run Datastage job
+---------------------------------------------------------------------------------------------------------------------------
+
+Once the file is received need to run below job in datastage prod:
+ 
+J_IDS_NE_RBTBL_LBLR
+
+TgtTblName=T_NE_RBTBL_LBLR
+FilePath=/data/NE_DMA/NEDATA/
+FileName=NE_RBTBL_LBLR_20260507.TXT
+PsetNeDmaParams=Claims
+PsetNeDmaConnection=(As pre-defined)
+
+
+---------------------------------------------------------------------------------------------------------------------------
+														3. Verify IDS table data
+---------------------------------------------------------------------------------------------------------------------------
+
+
+select * from IDS_NE.T_NE_RBTBL_LBLR
+WHERE LABELER = '00037';
+
+---------------------------------------------------------------------------------------------------------------------------
+														4. Run Datastage job sequence
+---------------------------------------------------------------------------------------------------------------------------
+
+Run the job SEQ_MDR_EXTRACT with correct parameters:
+
+SEQ_MDR_EXTRACT
+
+START_DATE = 2026-01-01
+END_DATE = 2026-03-31
+FILE_TYPE = ENCCLM
+PsetNeDmaParams = MDR
+PsetNeDmaConnection = (As pre-defined)
+
+---------------------------------------------------------------------------------------------------------------------------
+														5. Transfer files to SFTP
+---------------------------------------------------------------------------------------------------------------------------
+
+Check output files created in 
+/data/NE_DMA/sif_load/out
+
+-rw-rw-r--. 1 dsadm      dstage      82290814 May  8 13:30 MDR_Extract_ENCCLM_8.dat
+-rw-rw-r--. 1 dsadm      dstage      11232010 May  8 13:35 MDR_Extract_ENCCLM_256.dat
+-rw-rw-r--. 1 dsadm      dstage     401676487 May  8 13:35 MDR_Extract_ENCCLM_1.dat
+-rw-rw-r--. 1 dsadm      dstage     495199311 May  8 13:35 MDR_Extract_ENCCLM_20260508.dat
+-rw-rw-r--. 1 dsadm      dstage     495199311 May  8 13:35 DMA_ENCT_RBT_CLMS.TXT
+
+
+
+
+Dipak,
+Please place the below file on STATE sftp.
+Datastage Prod location: /data/NE_DMA/sif_load/out
+ 
+File Name:
+-rw-rw-r--. 1 dsadm      dstage     495199311 May  8 13:35 DMA_ENCT_RBT_CLMS.TXT
+
+Kindly make the permissions as 770 rwxrwx--- . 
+
+Thanks
+ 
+
+---------------------------------------------------------------------------------------------------------------------------
+														6. Send email to State team
+---------------------------------------------------------------------------------------------------------------------------
+
+TO:
+Andy Scherer (External) <andy.scherer@nebraska.gov>; Kunal Nangia (External) <kunal.nangia@nebraska.gov>; Gopal, Nishith <nisgopal@deloitte.com>; Iyer, Raaj <raajiyer@deloitte.com>; Dean, Stephen <stepdean@deloitte.com>; Kuppan, Agilan <akuppan@deloitte.com>; McIntosh, Catharine <camcintosh@deloitte.com>; Ponnusamy, Indhu <iponnusamy@deloitte.com>
+
+CC:
+DHHS MMIS Team Leads <DHHS.MMISTeamLeads@nebraska.gov>; Indrakumar Duraisamy (External) <indrakumar.duraisamy@nebraska.gov>; Bill Shields (External) <bill.shields@nebraska.gov>; Lucas Mitchell (External) <lucas.mitchell@nebraska.gov>; Shara Sheehan (External) <shara.sheehan@nebraska.gov>; Alkanti, Kiran Kumar <kalkanti@deloitte.com>
+
+
+
+Hello Andy,
+
+The rebate labeler file has been processed and transferred to the State SFTP.
+
+File: DMA_ENCT_RBT_CLMS.TXT
+
+
+---------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+
+
