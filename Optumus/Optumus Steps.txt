@@ -1,0 +1,79 @@
+-------------------------------------------
+Check source files
+-------------------------------------------
+
+cd /data/NE_DMA/ids_load/out/optumus
+
+ls -ltr
+
+-rw-rw-r--. 1 dsadm dstage  25426325 Oct 12 08:01 t_202609_Prov_Enroll_20261012080150.txt
+-rw-rw-r--. 1 dsadm dstage 361475794 Oct 12 08:06 t_202609_Mbr_Eligibility_20261012080650.txt
+-rw-rw-r--. 1 dsadm dstage 119023606 Oct 12 08:16 t_202609_Drug_Dtl_20261012081616.txt
+-rw-rw-r--. 1 dsadm dstage 147501468 Oct 12 08:44 t_202609_Drug_Hdr_20261012084446.txt
+-rw-rw-r--. 1 dsadm dstage 257955815 Oct 12 09:09 t_202609_Fac_Dtl_20261012090901.txt
+-rw-rw-r--. 1 dsadm dstage  80155487 Oct 12 09:50 t_202609_Fac_Hdr_20261012095019.txt
+-rw-rw-r--. 1 dsadm dstage 668969241 Oct 12 10:46 t_202609_Prof_Dtl_20261012104605.txt
+-rw-rw-r--. 1 dsadm dstage 649712144 Oct 12 12:40 t_202609_Prof_Hdr_20261012124014.txt
+
+
+-------------------------------------------
+Create zip files
+-------------------------------------------
+
+bash
+for file in t_202609_*.txt; do zip "${file%.txt}.zip" "$file"; done
+
+
+-------------------------------------------
+Validate zip files
+-------------------------------------------
+
+ls -ltr
+
+total 2539496
+-rw-rw-r--. 1 dsadm    dstage    25426325 Oct 12 08:01 t_202609_Prov_Enroll_20261012080150.txt
+-rw-rw-r--. 1 dsadm    dstage   361475794 Oct 12 08:06 t_202609_Mbr_Eligibility_20261012080650.txt
+-rw-rw-r--. 1 dsadm    dstage   119023606 Oct 12 08:16 t_202609_Drug_Dtl_20261012081616.txt
+-rw-rw-r--. 1 dsadm    dstage   147501468 Oct 12 08:44 t_202609_Drug_Hdr_20261012084446.txt
+-rw-rw-r--. 1 dsadm    dstage   257955815 Oct 12 09:09 t_202609_Fac_Dtl_20261012090901.txt
+-rw-rw-r--. 1 dsadm    dstage    80155487 Oct 12 09:50 t_202609_Fac_Hdr_20261012095019.txt
+-rw-rw-r--. 1 dsadm    dstage   668969241 Oct 12 10:46 t_202609_Prof_Dtl_20261012104605.txt
+-rw-rw-r--. 1 dsadm    dstage   649712144 Oct 12 12:40 t_202609_Prof_Hdr_20261012124014.txt
+-rw-rw-r--. 1 kalkanti kalkanti  20048609 Oct 12 12:53 t_202609_Drug_Dtl_20261012081616.zip
+-rw-rw-r--. 1 kalkanti kalkanti  26581907 Oct 12 12:53 t_202609_Drug_Hdr_20261012084446.zip
+-rw-rw-r--. 1 kalkanti kalkanti  30124126 Oct 12 12:53 t_202609_Fac_Dtl_20261012090901.zip
+-rw-rw-r--. 1 kalkanti kalkanti  13809584 Oct 12 12:53 t_202609_Fac_Hdr_20261012095019.zip
+-rw-rw-r--. 1 kalkanti kalkanti  35549552 Oct 12 12:54 t_202609_Mbr_Eligibility_20261012080650.zip
+-rw-rw-r--. 1 kalkanti kalkanti  69318591 Oct 12 12:54 t_202609_Prof_Dtl_20261012104605.zip
+-rw-rw-r--. 1 kalkanti kalkanti  88098626 Oct 12 12:54 t_202609_Prof_Hdr_20261012124014.zip
+-rw-rw-r--. 1 kalkanti kalkanti   6659107 Oct 12 12:54 t_202609_Prov_Enroll_20261012080150.zip
+
+
+-------------------------------------------
+Send email to Dipak to transfer zip files to State
+-------------------------------------------
+
+
+Hi @Pattnaik, DIPAk,
+
+Can you please transfer the below eight zip files to State SFTP. 
+Please confirm once they are transferred so I can inform them.
+
+Datastage location: /data/NE_DMA/ids_load/out/optumus
+
+-rw-rw-r--. 1 kalkanti kalkanti  20048609 Oct 12 12:53 t_202609_Drug_Dtl_20261012081616.zip
+-rw-rw-r--. 1 kalkanti kalkanti  26581907 Oct 12 12:53 t_202609_Drug_Hdr_20261012084446.zip
+-rw-rw-r--. 1 kalkanti kalkanti  30124126 Oct 12 12:53 t_202609_Fac_Dtl_20261012090901.zip
+-rw-rw-r--. 1 kalkanti kalkanti  13809584 Oct 12 12:53 t_202609_Fac_Hdr_20261012095019.zip
+-rw-rw-r--. 1 kalkanti kalkanti  35549552 Oct 12 12:54 t_202609_Mbr_Eligibility_20261012080650.zip
+-rw-rw-r--. 1 kalkanti kalkanti  69318591 Oct 12 12:54 t_202609_Prof_Dtl_20261012104605.zip
+-rw-rw-r--. 1 kalkanti kalkanti  88098626 Oct 12 12:54 t_202609_Prof_Hdr_20261012124014.zip
+-rw-rw-r--. 1 kalkanti kalkanti   6659107 Oct 12 12:54 t_202609_Prov_Enroll_20261012080150.zip
+
+
+
+-------------------------------------------
+Send email to State that files are transferred to State SFTP
+-------------------------------------------
+
+
